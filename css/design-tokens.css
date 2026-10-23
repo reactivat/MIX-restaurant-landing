@@ -1,0 +1,15 @@
+/* MIX — design tokens. Accent colors are deliberately restrained. */
+:root {
+  --mix-ink: #1C1C1C;
+  --mix-cream: #F8F3E7;
+  --mix-olive: #6B7F46;
+  --mix-terracotta: #C75B43;
+  --mix-sand: #DCC7A3;
+  --mix-white: #FFFFFF;
+  --mix-text-muted: #655F56;
+  --mix-border: #DFD7CB;
+  --mix-radius-sm: 8px;
+  --mix-radius-md: 14px;
+  --mix-radius-lg: 20px;
+  --mix-max-width: 1280px;
+}

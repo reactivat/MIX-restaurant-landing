@@ -1,0 +1,59 @@
+/* Иконки из предоставленного PNG. Оригинал не изменён: используется CSS-спрайт. */
+.restaurant-icon {
+    display: inline-block;
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    background-image: url(../public/assets/mix/decor/restaurant-icons.png);
+    background-repeat: no-repeat;
+}
+
+.restaurant-icon--atmosphere {
+    background-size: 485.9060% 364.4295%;
+    background-position: 2.2609% 12.5635%;
+}
+
+.restaurant-icon--bakery {
+    background-size: 540.2985% 405.2239%;
+    background-position: 28.8559% 16.6259%;
+}
+
+.restaurant-icon--ingredients {
+    background-size: 640.7080% 480.5310%;
+    background-position: 52.5368% 20.0581%;
+}
+
+.restaurant-icon--coffee {
+    background-size: 499.3103% 374.4828%;
+    background-position: 75.9931% 13.5678%;
+}
+
+.restaurant-icon--leaf {
+    background-size: 550.5703% 412.9278%;
+    background-position: 99.3249% 20.1701%;
+}
+
+.restaurant-icon--phone {
+    background-size: 713.3005% 534.9754%;
+    background-position: 29.2369% 55.7191%;
+}
+
+.restaurant-icon--pin {
+    background-size: 679.8122% 509.8592%;
+    background-position: 50.4453% 55.2119%;
+}
+
+.restaurant-icon--clock {
+    background-size: 536.2963% 402.2222%;
+    background-position: 75.5518% 55.2696%;
+}
+
+.restaurant-icon--delivery {
+    background-size: 550.5703% 412.9278%;
+    background-position: 97.7215% 57.5334%;
+}
+
+.restaurant-icon--message {
+    background-size: 579.2000% 434.4000%;
+    background-position: 97.0785% 91.7464%;
+}

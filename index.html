@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#F8F3E7">
+        <meta name="description" content="MIX — европейское кафе в Омске. Любимые блюда, тёплая атмосфера и вкусные встречи каждый день.">
+        <meta property="og:title" content="MIX — место для вкусных встреч">
+        <meta property="og:description" content="Любимые блюда, кофе и тёплая атмосфера. Европейское кафе MIX в Омске.">
+        <meta property="og:type" content="website">
+        <meta property="og:locale" content="ru_RU">
+        <link rel="icon" href="public/assets/mix/brand/mix-brush-dark.svg" type="image/svg+xml">
+        <link rel="icon" href="public/assets/mix/brand/mix-brush-light.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/design-tokens.css">
+        <link rel="stylesheet" href="css/restaurant-icons.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/order.js" defer></script>
+        <script src="js/main.js" defer></script>
+        <script src="js/reviews.js" defer></script>
+        <script src="js/photo-window.js" defer></script>
+        <script src="js/favorites.js" defer></script>
+        <title>MIX — место для вкусных встреч</title>
+    </head>
+    <body id="top">
+        <a class="skip-link" href="#main">Перейти к содержимому</a>
+        <header class="header">
+            <div class="header__inner container">
+                <a class="header__logo-link" href="#top" aria-label="MIX — на главную"><img class="header__logo" src="public/assets/mix/brand/mix-brush-dark.svg" alt="MIX" width="114" height="58"></a>
+                <nav class="header__nav" id="navigation" aria-label="Основная навигация">
+                    <ul class="header__nav-list">
+                        <li class="header__nav-item">
+                            <a class="header__nav-link" href="#aboutUs">О нас</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a class="header__nav-link" href="#favorite">Меню</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a class="header__nav-link" href="#specials">Акции</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a class="header__nav-link" href="#comments">Отзывы</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a class="header__nav-link" href="#contact">Контакты</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header__actions">
+                    <a class="header__button button button--small" href="#contactForm">Заказать <span class="header__button-icon" aria-hidden="true">→</span></a>
+                    <button class="header__toggle icon-button" type="button" aria-controls="navigation" aria-expanded="false" aria-label="Открыть меню" hidden><svg class="header__toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+                </div>
+            </div>
+        </header>
+        <main id="main">
+            <section class="hero" id="banner" aria-label="Знакомство с MIX" aria-roledescription="карусель" aria-describedby="hero-instructions" tabindex="0">
+                <div class="hero__media">
+                    <div class="hero__slide" role="group" aria-roledescription="слайд" aria-label="1 из 5: паста">
+                        <picture class="hero__picture">
+                            <img class="hero__image" src="public/assets/mix/hero/slide-01-pasta.webp" alt="Паста с креветками на столе в тёплом солнечном свете" width="1672" height="941" fetchpriority="high">
+                        </picture>
+                    </div>
+                    <div class="hero__slide" role="group" aria-roledescription="слайд" aria-label="2 из 5: пицца" hidden>
+                        <picture class="hero__picture">
+                            <img class="hero__image" src="public/assets/mix/hero/slide-02-pizza.webp" alt="Пицца с томатами и базиликом из печи" width="1448" height="1086" loading="lazy" decoding="async">
+                        </picture>
+                    </div>
+                    <div class="hero__slide" role="group" aria-roledescription="слайд" aria-label="3 из 5: десерт" hidden>
+                        <picture class="hero__picture">
+                            <img class="hero__image" src="public/assets/mix/hero/slide-03-dessert.webp" alt="Тирамису с ягодами и чашка эспрессо" width="1448" height="1086" loading="lazy" decoding="async">
+                        </picture>
+                    </div>
+                    <div class="hero__slide" role="group" aria-roledescription="слайд" aria-label="4 из 5: атмосфера" hidden>
+                        <picture class="hero__picture">
+                            <img class="hero__image" src="public/assets/mix/hero/slide-04-restaurant.webp" alt="Светлый зал с деревянными столами и зелёными растениями" width="1448" height="1086" loading="lazy" decoding="async">
+                        </picture>
+                    </div>
+                    <div class="hero__slide" role="group" aria-roledescription="слайд" aria-label="5 из 5: завтрак" hidden>
+                        <picture class="hero__picture">
+                            <img class="hero__image" src="public/assets/mix/hero/slide-05-breakfast.webp" alt="Свежая выпечка, хлеб и кофе на утреннем столе" width="1448" height="1086" loading="lazy" decoding="async">
+                        </picture>
+                    </div>
+                </div>
+                <div class="hero__panel">
+                    <img class="hero__branch" src="public/assets/mix/decor/olive-branch.svg" alt="" width="110" height="180">
+                    <div class="hero__content">
+                        <h1 class="hero__heading">Вкусные <br class="hero__heading-break">моменты<br>каждый день</h1>
+                        <p class="hero__description">Современное кафе с любимыми блюдами <br>и тёплой атмосферой.</p>
+                        <a class="hero__button button" href="#favorite">Посмотреть меню <span aria-hidden="true">→</span></a>
+                        <p class="hero__hours"><span class="hero__hours-dot" aria-hidden="true"></span>Ежедневно с 10:00 до 22:00</p>
+                    </div>
+                </div>
+                <button class="hero__pause" type="button" aria-label="Приостановить слайдер" aria-pressed="false" hidden>Приостановить смену фото</button>
+                <p class="hero__instructions visually-hidden" id="hero-instructions">Смена фото: стрелки влево и вправо или горизонтальный свайп. При фокусе смена приостанавливается.</p>
+                <p class="hero__status visually-hidden" aria-live="off" aria-atomic="true">Слайд 1 из 5: паста и хорошая компания.</p>
+            </section>
+            <section class="advantages container" id="advantages" aria-labelledby="advantages-heading">
+                <div class="advantages__header">
+                    <h2 class="advantages__heading" id="advantages-heading">Наши преимущества, <span>которые Вам понравятся :)</span></h2>
+                    <div class="advantages__controls" hidden>
+                        <button class="advantages__arrow" type="button" data-advantages-step="-1" aria-label="Предыдущее преимущество" aria-controls="advantages-track">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6 6-6-6 6-6"/></svg>
+                        </button>
+                        <button class="advantages__arrow" type="button" data-advantages-step="1" aria-label="Следующее преимущество" aria-controls="advantages-track">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <ul class="advantages__list" id="advantages-track" aria-label="Преимущества кафе" tabindex="0">
+                    <li class="advantages__item">
+                        <img class="advantages__photo" src="public/assets/mix/interior/cozy-corner.webp" alt="" width="1448" height="1086" loading="lazy" decoding="async">
+                        <div class="advantages__glass">
+                            <span class="advantages__icon restaurant-icon restaurant-icon--atmosphere" aria-hidden="true"></span>
+                            <h3 class="advantages__title">Уютная<br>атмосфера</h3>
+                        </div>
+                    </li>
+                    <li class="advantages__item">
+                        <img class="advantages__photo" src="public/assets/mix/features/fresh-bakery.webp" alt="" width="1448" height="1086" loading="lazy" decoding="async">
+                        <div class="advantages__glass">
+                            <span class="advantages__icon restaurant-icon restaurant-icon--bakery" aria-hidden="true"></span>
+                            <h3 class="advantages__title">Собственная<br>пекарня</h3>
+                        </div>
+                    </li>
+                    <li class="advantages__item">
+                        <img class="advantages__photo" src="public/assets/mix/features/fresh-ingredients.webp" alt="" width="1254" height="1254" loading="lazy" decoding="async">
+                        <div class="advantages__glass">
+                            <span class="advantages__icon restaurant-icon restaurant-icon--ingredients" aria-hidden="true"></span>
+                            <h3 class="advantages__title">Свежие<br>продукты</h3>
+                        </div>
+                    </li>
+                    <li class="advantages__item">
+                        <img class="advantages__photo" src="public/assets/mix/features/coffee.webp" alt="" width="1672" height="941" loading="lazy" decoding="async">
+                        <div class="advantages__glass">
+                            <span class="advantages__icon restaurant-icon restaurant-icon--coffee" aria-hidden="true"></span>
+                            <h3 class="advantages__title">Зерновой<br>кофе</h3>
+                        </div>
+                    </li>
+                </ul>
+                <p class="visually-hidden" id="advantages-status" aria-live="polite" aria-atomic="true"></p>
+            </section>
+            <section class="about container section" id="aboutUs" aria-labelledby="about-heading">
+                <div class="about__content">
+                    <h2 class="about__heading section-heading" id="about-heading">MIX - место,<br>где хорошая еда<br>объединяет людей</h2>
+                    <p class="about__text">Мы выбираем свежие продукты, готовим любимые блюда и создаём атмосферу, в которую хочется возвращаться.</p>
+                    <a class="about__link button" href="#atmosphere">Заглянуть в MIX <span aria-hidden="true">→</span></a>
+                </div>
+                <figure class="about__figure">
+                    <img class="about__image" src="public/assets/mix/interior/main-room.webp" alt="Интерьер MIX: солнечный зал, дерево и зелень" width="1448" height="1086" loading="lazy" decoding="async">
+                </figure>
+            </section>
+            <div class="about-extras container">
+                <details class="atmosphere" id="atmosphere">
+                    <summary class="atmosphere__summary">Посмотреть интерьер MIX <span class="atmosphere__toggle" aria-hidden="true">+</span></summary>
+                    <div class="atmosphere__gallery">
+                        <figure class="atmosphere__figure atmosphere__figure--large">
+                            <img class="atmosphere__image" src="public/assets/mix/interior/sunlit-room.webp" alt="Солнечный зал MIX с большими окнами" width="1448" height="1086" loading="lazy" decoding="async">
+                            <figcaption class="atmosphere__caption">
+                                Солнечный зал
+                            </figcaption>
+                        </figure>
+                        <figure class="atmosphere__figure">
+                            <img class="atmosphere__image" src="public/assets/mix/interior/bar-detail.webp" alt="Барная стойка с деревянной отделкой" width="1448" height="1086" loading="lazy" decoding="async">
+                            <figcaption class="atmosphere__caption">
+                                Барная стойка
+                            </figcaption>
+                        </figure>
+                        <figure class="atmosphere__figure">
+                            <img class="atmosphere__image" src="public/assets/mix/interior/cozy-corner.webp" alt="Уютный уголок с диваном и растениями" width="1448" height="1086" loading="lazy" decoding="async">
+                            <figcaption class="atmosphere__caption">
+                                Уютный уголок
+                            </figcaption>
+                        </figure>
+                    </div>
+
+                </details>
+                <details class="specials" id="specials">
+                    <summary class="specials__summary">Счастливые часы <span class="specials__time">10:00–11:00 <span>и</span> 18:30–19:30</span><span class="specials__toggle" aria-hidden="true">+</span></summary>
+                    <p class="specials__description">Загляните к нам утром или вечером — в часы специальных предложений.</p>
+                </details>
+            </div>
+            <div class="photo-window" role="img" aria-label="Барная стойка с напитками в тёплом солнечном свете">
+                <div class="photo-window__image" aria-hidden="true"></div>
+            </div>
+            <section class="favorite section" id="favorite" aria-labelledby="favorite-heading">
+                <div class="container">
+                    <div class="favorite__header section-header">
+                        <div class="favorite__heading-group">
+                            <h2 class="section-heading" id="favorite-heading">Наши фавориты</h2>
+                            <p class="favorite__intro">Любимые блюда для тёплых встреч</p>
+                        </div>
+                        <div class="favorite__controls" hidden>
+                            <button class="favorite__arrow" type="button" data-favorite-step="-1" aria-label="Предыдущие блюда" aria-controls="favorite-track">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6 6-6-6 6-6"/></svg>
+                            </button>
+                            <button class="favorite__arrow" type="button" data-favorite-step="1" aria-label="Следующие блюда" aria-controls="favorite-track">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <p class="visually-hidden" id="favorite-instructions">Листайте блюда горизонтальным жестом или стрелками. При фокусе на ленте используйте клавиши влево и вправо, Home и End.</p>
+                <div class="favorite__cards" id="favorite-track" role="group" aria-label="Любимые блюда MIX" aria-describedby="favorite-instructions" tabindex="0">
+                        <article class="dish" aria-labelledby="dish-soup">
+                            <div class="dish__media">
+                                <img class="dish__image" src="public/assets/mix/food/soup-solyanka.webp" alt="Мясная солянка с лимоном и маслинами" width="1448" height="1086" loading="lazy" decoding="async" draggable="false">
+                            </div>
+                            <div class="dish__content">
+                                <div class="dish__heading-row">
+                                    <h3 class="dish__heading" id="dish-soup">Солянка мясная</h3>
+                                    <span class="dish__mass">360/20/50 г</span>
+                                </div>
+                                <p class="dish__description">Подаётся со сметаной и гренками из Купеческого хлеба.</p>
+                                <div class="dish__bottom">
+                                    <p class="dish__price">159 <span>₽</span></p>
+                                    <button class="dish__button" type="button" data-dish="soup" aria-label="Добавить в заявку: Солянка мясная" hidden><span aria-hidden="true">+</span></button>
+                                    <noscript><a class="text-link" href="#contactForm">К заявке</a></noscript>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="dish" aria-labelledby="dish-salad">
+                            <div class="dish__media">
+                                <img class="dish__image" src="public/assets/mix/food/salad-vitaminka-generated.webp" alt="Салат Витаминка со свежими овощами и страчателлой" width="1200" height="900" loading="lazy" decoding="async" draggable="false">
+                            </div>
+                            <div class="dish__content">
+                                <div class="dish__heading-row">
+                                    <h3 class="dish__heading" id="dish-salad">Салат Витаминка</h3>
+                                    <span class="dish__mass">250/20 г</span>
+                                </div>
+                                <p class="dish__description">Подаётся с оливковым маслом и сыром страчателла.</p>
+                                <div class="dish__bottom">
+                                    <p class="dish__price">209 <span>₽</span></p>
+                                    <button class="dish__button" type="button" data-dish="salad" aria-label="Добавить в заявку: Салат Витаминка" hidden><span aria-hidden="true">+</span></button>
+                                    <noscript><a class="text-link" href="#contactForm">К заявке</a></noscript>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="dish" aria-labelledby="dish-pizza">
+                            <div class="dish__media">
+                                <img class="dish__image" src="public/assets/mix/food/pizza-spicy.webp" alt="Острая пицца с перцем и томатами" width="1448" height="1086" loading="lazy" decoding="async" draggable="false">
+                            </div>
+                            <div class="dish__content">
+                                <div class="dish__heading-row">
+                                    <h3 class="dish__heading" id="dish-pizza">Острый перчик</h3>
+                                    <span class="dish__mass">480 г</span>
+                                </div>
+                                <p class="dish__description">Пицца для тех, кто любит поострее. Внимание: очень остро!</p>
+                                <div class="dish__bottom">
+                                    <p class="dish__price">709 <span>₽</span></p>
+                                    <button class="dish__button" type="button" data-dish="pizza" aria-label="Добавить в заявку: Пицца Острый перчик" hidden><span aria-hidden="true">+</span></button>
+                                    <noscript><a class="text-link" href="#contactForm">К заявке</a></noscript>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="dish" aria-labelledby="dish-pasta">
+                            <div class="dish__media">
+                                <img class="dish__image" src="public/assets/mix/food/pasta-shrimp-generated.webp" alt="Паста лингвини с креветками, томатами и базиликом" width="1200" height="900" loading="lazy" decoding="async" draggable="false">
+                            </div>
+                            <div class="dish__content">
+                                <div class="dish__heading-row">
+                                    <h3 class="dish__heading" id="dish-pasta">Паста с креветками</h3>
+                                    <span class="dish__mass">320 г</span>
+                                </div>
+                                <p class="dish__description">Лингвини с креветками, томатами черри и базиликом в сливочном соусе.</p>
+                                <div class="dish__bottom">
+                                    <p class="dish__price">489 <span>₽</span></p>
+                                    <button class="dish__button" type="button" data-dish="pasta" aria-label="Добавить в заявку: Паста с креветками" hidden><span aria-hidden="true">+</span></button>
+                                    <noscript><a class="text-link" href="#contactForm">К заявке</a></noscript>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="dish" aria-labelledby="dish-chicken">
+                            <div class="dish__media">
+                                <img class="dish__image" src="public/assets/mix/food/chicken-potatoes-generated.webp" alt="Румяное куриное филе с запечённым картофелем и травами" width="1200" height="900" loading="lazy" decoding="async" draggable="false">
+                            </div>
+                            <div class="dish__content">
+                                <div class="dish__heading-row">
+                                    <h3 class="dish__heading" id="dish-chicken">Цыплёнок с картофелем</h3>
+                                    <span class="dish__mass">330 г</span>
+                                </div>
+                                <p class="dish__description">Нежное филе, румяный молодой картофель и сливочный соус с травами.</p>
+                                <div class="dish__bottom">
+                                    <p class="dish__price">459 <span>₽</span></p>
+                                    <button class="dish__button" type="button" data-dish="chicken" aria-label="Добавить в заявку: Цыплёнок с картофелем" hidden><span aria-hidden="true">+</span></button>
+                                    <noscript><a class="text-link" href="#contactForm">К заявке</a></noscript>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="dish" aria-labelledby="dish-risotto">
+                            <div class="dish__media">
+                                <img class="dish__image" src="public/assets/mix/food/risotto-mushrooms-generated.webp" alt="Сливочное ризотто с обжаренными грибами и пармезаном" width="1200" height="900" loading="lazy" decoding="async" draggable="false">
+                            </div>
+                            <div class="dish__content">
+                                <div class="dish__heading-row">
+                                    <h3 class="dish__heading" id="dish-risotto">Ризотто с грибами</h3>
+                                    <span class="dish__mass">300 г</span>
+                                </div>
+                                <p class="dish__description">Рис арборио с шампиньонами, белыми грибами, пармезаном и тимьяном.</p>
+                                <div class="dish__bottom">
+                                    <p class="dish__price">389 <span>₽</span></p>
+                                    <button class="dish__button" type="button" data-dish="risotto" aria-label="Добавить в заявку: Ризотто с грибами" hidden><span aria-hidden="true">+</span></button>
+                                    <noscript><a class="text-link" href="#contactForm">К заявке</a></noscript>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="dish" aria-labelledby="dish-cheesecake">
+                            <div class="dish__media">
+                                <img class="dish__image" src="public/assets/mix/food/cheesecake-berries-generated.webp" alt="Ванильный чизкейк с малиной, голубикой и ягодным соусом" width="1200" height="900" loading="lazy" decoding="async" draggable="false">
+                            </div>
+                            <div class="dish__content">
+                                <div class="dish__heading-row">
+                                    <h3 class="dish__heading" id="dish-cheesecake">Чизкейк с ягодами</h3>
+                                    <span class="dish__mass">160 г</span>
+                                </div>
+                                <p class="dish__description">Классический ванильный чизкейк со свежими ягодами и малиновым соусом.</p>
+                                <div class="dish__bottom">
+                                    <p class="dish__price">279 <span>₽</span></p>
+                                    <button class="dish__button" type="button" data-dish="cheesecake" aria-label="Добавить в заявку: Чизкейк с ягодами" hidden><span aria-hidden="true">+</span></button>
+                                    <noscript><a class="text-link" href="#contactForm">К заявке</a></noscript>
+                                </div>
+                            </div>
+                        </article>
+                </div>
+                <p class="visually-hidden" id="favorite-status" role="status" aria-live="polite" aria-atomic="true"></p>
+            </section>
+            <section class="order section" id="contactForm" aria-labelledby="order-heading">
+                <div class="order__inner container">
+                    <div class="order__intro">
+                        <h2 class="order__heading section-heading" id="order-heading">Оставьте заявку,<br>и мы перезвоним</h2>
+                        <p class="order__description">Обсудим ваш заказ и ответим на вопросы.</p>
+                    </div>
+                    <form class="order-form" id="order-form" novalidate>
+                        <div class="order-form__row">
+                            <div class="order-form__field">
+                                <label class="order-form__label" for="customer-name">Ваше имя <span aria-hidden="true">*</span></label>
+                                <input class="order-form__input" id="customer-name" name="name" autocomplete="name" maxlength="80" required aria-describedby="name-error" placeholder="Как к вам обращаться?">
+                                <span class="order-form__error" id="name-error" data-error="name"></span>
+                            </div>
+                            <div class="order-form__field">
+                                <label class="order-form__label" for="customer-phone">Телефон <span aria-hidden="true">*</span></label>
+                                <input class="order-form__input" type="tel" id="customer-phone" name="phone" autocomplete="tel" inputmode="tel" maxlength="32" required aria-describedby="phone-error" placeholder="+7 (___) ___-__-__">
+                                <span class="order-form__error" id="phone-error" data-error="phone"></span>
+                            </div>
+                        </div>
+                        <div class="order-form__row order-form__row--choice order-form__row--single">
+                            <div class="order-form__field">
+                                <label class="order-form__label" for="order-dish">Что вам приготовить?</label>
+                                <select class="order-form__input order-form__select" id="order-dish" name="dish">
+                                    <option value="">Только обратный звонок</option>
+                                    <option value="soup">Солянка мясная — 159 ₽</option>
+                                    <option value="salad">Салат Витаминка — 209 ₽</option>
+                                    <option value="pizza">Пицца Острый перчик — 709 ₽</option>
+                                    <option value="pasta">Паста с креветками — 489 ₽</option>
+                                    <option value="chicken">Цыплёнок с картофелем — 459 ₽</option>
+                                    <option value="risotto">Ризотто с грибами — 389 ₽</option>
+                                    <option value="cheesecake">Чизкейк с ягодами — 279 ₽</option>
+                                </select>
+                            </div>
+                            <div class="order-form__field" id="quantity-field" hidden>
+                                <label class="order-form__label" for="order-quantity">Количество</label>
+                                <input class="order-form__input" type="number" id="order-quantity" name="quantity" min="1" max="20" value="1" required disabled aria-describedby="quantity-error">
+                                <span class="order-form__error" id="quantity-error" data-error="quantity"></span>
+                            </div>
+                        </div>
+                        <fieldset class="order-form__fulfillment" id="fulfillment-field" hidden disabled>
+                            <legend class="order-form__label">Способ получения</legend>
+                            <label class="order-form__radio-label"><input class="order-form__radio" type="radio" name="fulfillment" value="pickup" checked>Самовывоз</label>
+                            <label class="order-form__radio-label"><input class="order-form__radio" type="radio" name="fulfillment" value="delivery">Доставка</label>
+                        </fieldset>
+                        <fieldset class="order-form__address" id="address-field" hidden disabled>
+                            <legend class="visually-hidden">Адрес доставки</legend>
+                            <div class="order-form__row">
+                                <div class="order-form__field">
+                                    <label class="order-form__label" for="customer-city">Город <span aria-hidden="true">*</span></label>
+                                    <input class="order-form__input" id="customer-city" name="city" autocomplete="address-level2" maxlength="80" value="Омск" aria-describedby="city-error">
+                                    <span class="order-form__error" id="city-error" data-error="city"></span>
+                                </div>
+                                <div class="order-form__field">
+                                    <label class="order-form__label" for="customer-address">Улица и дом <span aria-hidden="true">*</span></label>
+                                    <input class="order-form__input" id="customer-address" name="address" autocomplete="street-address" maxlength="180" aria-describedby="address-error" placeholder="Улица, номер дома">
+                                    <span class="order-form__error" id="address-error" data-error="address"></span>
+                                </div>
+                            </div>
+                            <div class="order-form__row order-form__row--three">
+                                <div class="order-form__field">
+                                    <label class="order-form__label" for="customer-apartment">Квартира</label>
+                                    <input class="order-form__input" id="customer-apartment" name="apartment" inputmode="numeric" maxlength="12">
+                                </div>
+                                <div class="order-form__field">
+                                    <label class="order-form__label" for="customer-entrance">Подъезд</label>
+                                    <input class="order-form__input" id="customer-entrance" name="entrance" inputmode="numeric" maxlength="8">
+                                </div>
+                                <div class="order-form__field">
+                                    <label class="order-form__label" for="customer-floor">Этаж</label>
+                                    <input class="order-form__input" id="customer-floor" name="floor" inputmode="numeric" maxlength="8">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <details class="order-form__details">
+                            <summary class="order-form__details-title">Комментарий к заявке</summary>
+                            <div class="order-form__field">
+                                <label class="order-form__label" for="customer-comment">Комментарий <span class="order-form__optional">необязательно</span></label>
+                                <textarea class="order-form__input order-form__textarea" id="customer-comment" name="comment" rows="3" maxlength="1000" placeholder="Пожелания к заказу или информация об аллергии"></textarea>
+                            </div>
+                        </details>
+                        <p class="order-form__summary" id="order-summary" aria-live="polite" hidden></p>
+                        <div class="order-form__consent">
+                            <input class="order-form__consent-input" id="customer-consent" name="consent" type="checkbox" value="yes" required aria-describedby="consent-error">
+                            <div class="order-form__consent-content">
+                                <label class="order-form__consent-label" for="customer-consent">Даю согласие на обработку персональных данных для подготовки заявки</label>
+                                <p class="order-form__consent-links"><a href="consent.html" target="_blank" rel="noopener noreferrer">Текст согласия</a><span aria-hidden="true"> · </span><a href="privacy.html" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a></p>
+                                <span class="order-form__error" id="consent-error" data-error="consent"></span>
+                            </div>
+                        </div>
+                        <div class="order-form__bottom">
+                            <button class="order-form__submit button" type="submit" disabled>Подготовить заявку <span aria-hidden="true">→</span></button>
+                            <span class="order-form__hint">Поля со * обязательны.</span>
+                        </div>
+                        <div class="order-form__feedback" id="form-feedback" role="status" aria-live="polite" hidden>
+                        </div>
+                        <button class="order-form__download text-link" id="download-request" type="button" hidden>Скачать подготовленную заявку <span aria-hidden="true">↓</span></button>
+                        <noscript><p class="order-form__noscript">Для подготовки заявки включите JavaScript.</p></noscript>
+                    </form>
+                </div>
+            </section>
+            <section class="reviews container" id="comments" aria-labelledby="reviews-heading">
+                <div class="reviews__header">
+                    <p class="reviews__eyebrow">Тёплые встречи — добрые слова</p>
+                    <h2 class="reviews__heading" id="reviews-heading">Впечатления гостей</h2>
+                </div>
+                <p class="visually-hidden" id="reviews-instructions">Листайте отзывы стрелками влево и вправо или горизонтальным жестом. Home — первый отзыв, End — последний.</p>
+                <div class="reviews__viewport" aria-describedby="reviews-instructions">
+                    <div class="reviews__list" id="reviews-list">
+                        <article class="review" aria-labelledby="review-anna">
+                            <div class="review__top"><span class="review__quote" aria-hidden="true">“</span><span class="review__rating" role="img" aria-label="Оценка: 5 из 5"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg></span></div>
+                            <blockquote class="review__text">
+                                Прекрасное место для праздника! Интерьер просто шикарный, а обслуживание на высшем уровне! Официанты очень внимательные и дружелюбные, создают ощущение уюта и заботы. Обязательно вернусь сюда снова!
+                            </blockquote>
+                            <div class="review__author">
+                                <span class="review__avatar" aria-hidden="true">АС</span>
+                                <div>
+                                    <h3 class="review__name" id="review-anna">Анна Смирнова</h3>
+                                    <time class="review__date" datetime="2024-10-13">13 октября 2024</time>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="review" aria-labelledby="review-vladimir">
+                            <div class="review__top"><span class="review__quote" aria-hidden="true">“</span><span class="review__rating" role="img" aria-label="Оценка: 5 из 5"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg></span></div>
+                            <blockquote class="review__text">
+                                Очень красивый зал. Бывал здесь один раз на свадьбе у друзей. Всё очень шикарно! И ещё хотел бы отметить официантов, молодцы, прям стараются угодить, обслуживание отличное было!
+                            </blockquote>
+                            <div class="review__author">
+                                <span class="review__avatar" aria-hidden="true">ВГ</span>
+                                <div>
+                                    <h3 class="review__name" id="review-vladimir">Владимир Гришнов</h3>
+                                    <time class="review__date" datetime="2024-10-15">15 октября 2024</time>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="review" aria-labelledby="review-ekaterina">
+                            <div class="review__top"><span class="review__quote" aria-hidden="true">“</span><span class="review__rating" role="img" aria-label="Оценка: 5 из 5"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg></span></div>
+                            <blockquote class="review__text">
+                                Я посетила ресторан на юбилее, и всё было просто замечательно. Особенно хочу отметить профессионализм официантов — они действительно стараются сделать всё возможное для гостей. Спасибо за прекрасный вечер!
+                            </blockquote>
+                            <div class="review__author">
+                                <span class="review__avatar" aria-hidden="true">ЕИ</span>
+                                <div>
+                                    <h3 class="review__name" id="review-ekaterina">Екатерина Иванова</h3>
+                                    <time class="review__date" datetime="2024-10-17">17 октября 2024</time>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="reviews__controls" hidden>
+                    <button class="reviews__arrow" type="button" data-review-step="-1" aria-label="Предыдущий отзыв" aria-controls="reviews-list">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+                    </button>
+                    <div class="reviews__pagination" role="group" aria-label="Выбрать отзыв">
+                        <button class="reviews__dot" type="button" data-review-index="0" aria-label="Отзыв Анны Смирновой" aria-controls="reviews-list" aria-current="true"></button>
+                        <button class="reviews__dot" type="button" data-review-index="1" aria-label="Отзыв Владимира Гришнова" aria-controls="reviews-list" aria-current="false"></button>
+                        <button class="reviews__dot" type="button" data-review-index="2" aria-label="Отзыв Екатерины Ивановой" aria-controls="reviews-list" aria-current="false"></button>
+                    </div>
+                    <button class="reviews__arrow" type="button" data-review-step="1" aria-label="Следующий отзыв" aria-controls="reviews-list">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                </div>
+                <p class="visually-hidden" id="reviews-status" role="status" aria-live="polite" aria-atomic="true"></p>
+            </section>
+            <section class="contact container section" id="contact" aria-labelledby="contact-heading">
+                <div class="contact__info">
+                    <h2 class="section-heading" id="contact-heading">Контакты</h2>
+                    <dl class="contact__list">
+                        <div class="contact__item">
+                            <dt class="contact__label"><span class="contact__icon restaurant-icon restaurant-icon--pin" aria-hidden="true"></span>Адрес</dt>
+                            <dd class="contact__value">Омск, ул. Тёплых встреч, 12</dd>
+                        </div>
+                        <div class="contact__item">
+                            <dt class="contact__label"><span class="contact__icon restaurant-icon restaurant-icon--clock" aria-hidden="true"></span>Часы работы</dt>
+                            <dd class="contact__value">Ежедневно · 10:00–22:00</dd>
+                        </div>
+                        <div class="contact__item">
+                            <dt class="contact__label"><span class="contact__icon restaurant-icon restaurant-icon--message" aria-hidden="true"></span>Электронная почта</dt>
+                            <dd class="contact__value"><a class="contact__link" href="mailto:Example@mail.ru">Example@mail.ru <span aria-hidden="true">↗</span></a></dd>
+                        </div>
+                    </dl>
+
+                </div>
+                <div class="contact__map">
+                    <div class="contact__map-placeholder" id="map-placeholder">
+                        <img class="contact__map-icon" src="public/assets/mix/icons/pin.svg" alt="" width="48" height="48">
+                        <h3 class="contact__map-heading">Обзорная карта</h3>
+                        <p class="contact__map-description">Адрес кафе приведён для примера.</p>
+                        <button class="contact__map-button button button--outline" id="load-map" type="button" hidden>Показать карту <span aria-hidden="true">↗</span></button>
+                        <a class="contact__map-link text-link" href="https://yandex.ru/maps/?ll=0%2C0&amp;z=1" target="_blank" rel="noopener noreferrer">Открыть карту <span aria-hidden="true">↗</span></a>
+
+                    </div>
+                    <iframe class="contact__iframe" id="contact-map" title="Обзорная карта" data-src="https://yandex.ru/map-widget/v1/?ll=0%2C0&amp;z=1" width="640" height="540" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen hidden>
+                    </iframe>
+                    <p class="visually-hidden" id="map-loading" role="status" hidden>Загружаем карту.</p>
+                </div>
+            </section>
+        </main>
+        <footer class="footer" id="footer">
+            <div class="footer__inner container">
+                <div class="footer__brand">
+                    <a class="footer__logo-link" href="#top" aria-label="MIX — наверх"><img class="footer__logo" src="public/assets/mix/brand/mix-brush-light.svg" alt="MIX" width="144" height="74" loading="lazy"></a>
+                    <p class="footer__tagline">Больше, чем еда.</p>
+                    <div class="footer__socials" aria-label="Соцсети MIX: ссылки на страницы пока не добавлены">
+                        <span class="footer__social footer__social--youtube" role="img" aria-label="YouTube — профиль MIX пока не добавлен" title="YouTube — профиль MIX пока не добавлен"><img class="footer__social-icon" src="public/assets/mix/socials/youtube.svg" alt="" width="24" height="24"></span>
+                        <span class="footer__social footer__social--rutube" role="img" aria-label="RUTUBE — профиль MIX пока не добавлен" title="RUTUBE — профиль MIX пока не добавлен"><img class="footer__social-icon" src="public/assets/mix/socials/rutube.svg" alt="" width="24" height="24"></span>
+                        <span class="footer__social footer__social--vk" role="img" aria-label="VK — профиль MIX пока не добавлен" title="VK — профиль MIX пока не добавлен"><img class="footer__social-icon" src="public/assets/mix/socials/vk.svg" alt="" width="24" height="24"></span>
+                        <span class="footer__social footer__social--max" role="img" aria-label="MAX — профиль MIX пока не добавлен" title="MAX — профиль MIX пока не добавлен"><img class="footer__social-icon" src="public/assets/mix/socials/max.png" alt="" width="24" height="24"></span>
+                    </div>
+                </div>
+                <nav class="footer__nav" aria-label="Навигация в подвале">
+                    <a class="footer__link" href="#favorite">Меню</a>
+                    <a class="footer__link" href="#aboutUs">О кафе</a>
+                    <a class="footer__link" href="#atmosphere">Атмосфера</a>
+                    <a class="footer__link" href="#comments">Отзывы</a>
+                    <a class="footer__link" href="#specials">Счастливые часы</a>
+                    <a class="footer__link" href="#contact">Контакты</a>
+                </nav>
+                <div class="footer__contact">
+                    <p class="footer__address">Омск, ул. Тёплых встреч, 12</p>
+                    <p class="footer__hours">Ежедневно · 10:00–22:00</p>
+                    <a class="footer__button button button--small" href="#contactForm">Заказать звонок <span aria-hidden="true">↗</span></a>
+
+                </div>
+            </div>
+            <div class="footer__bottom container">
+                <p class="footer__copyright">© Кафе MIX, 2024–2026</p>
+                <nav class="footer__legal" aria-label="Правовая информация">
+                    <a class="footer__legal-link" href="privacy.html">Политика конфиденциальности</a>
+                    <a class="footer__legal-link" href="consent.html">Обработка персональных данных</a>
+                </nav>
+            </div>
+        </footer>
+        <a class="back-top icon-button" href="#top" aria-label="Вернуться наверх" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"></path></svg></a>
+    </body>
+</html>
