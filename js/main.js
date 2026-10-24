@@ -822,6 +822,18 @@
 
         button.addEventListener('click', function () { loadMap(true); });
 
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver(function (entries) {
+                if (entries[0].isIntersecting) {
+                    loadMap(false);
+                    observer.disconnect();
+                }
+            }, { rootMargin: '600px' });
+            observer.observe(document.querySelector('.contact__map'));
+        } else {
+            loadMap(false);
+        }
+
         frame.addEventListener('load', function () {
             if (loaded) status.textContent = 'Карта загружена.';
         });
