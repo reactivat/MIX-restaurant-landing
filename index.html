@@ -3,6 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            (function (root) {
+                root.classList.add('js');
+                addEventListener('pageshow', function () {
+                    requestAnimationFrame(function () {
+                        requestAnimationFrame(function () { root.classList.add('page-ready'); });
+                    });
+                });
+                addEventListener('pagehide', function () { root.classList.remove('page-ready'); });
+            })(document.documentElement);
+        </script>
         <meta name="theme-color" content="#F8F3E7">
         <meta name="description" content="MIX — европейское кафе в Омске. Любимые блюда, тёплая атмосфера и вкусные встречи каждый день.">
         <meta property="og:title" content="MIX — место для вкусных встреч">
@@ -11,15 +22,15 @@
         <meta property="og:locale" content="ru_RU">
         <link rel="icon" href="public/assets/mix/brand/mix-brush-dark.svg" type="image/svg+xml">
         <link rel="icon" href="public/assets/mix/brand/mix-brush-light.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/design-tokens.css">
-        <link rel="stylesheet" href="css/restaurant-icons.css">
-        <link rel="stylesheet" href="css/style.css">
-        <script src="js/order.js" defer></script>
-        <script src="js/main.js" defer></script>
-        <script src="js/reviews.js" defer></script>
-        <script src="js/photo-window.js" defer></script>
-        <script src="js/favorites.js" defer></script>
+        <link rel="stylesheet" href="css/normalize.css?v=80e2e049db">
+        <link rel="stylesheet" href="css/design-tokens.css?v=3b7f82ad5e">
+        <link rel="stylesheet" href="css/restaurant-icons.css?v=fd9a1ca8d6">
+        <link rel="stylesheet" href="css/style.css?v=2a4323c2e6">
+        <link rel="preload" href="public/assets/optimized/Inter_18pt-Regular-latin-cyrillic-e8718a3eb7.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="public/assets/optimized/Inter_18pt-Bold-latin-cyrillic-9454da995e.woff2" as="font" type="font/woff2" crossorigin>
+        <script src="js/order.js?v=6fbb36e439" defer></script>
+        <script src="js/main.js?v=e6c0f95337" defer></script>
+        <script src="js/reviews.js?v=1a6e06ed41" defer></script>
         <title>MIX — место для вкусных встреч</title>
     </head>
     <body id="top">
@@ -72,29 +83,29 @@
                 <div class="hero__media">
                     <div class="hero__slide" role="group" aria-roledescription="слайд" aria-label="1 из 5: паста">
                         <picture class="hero__picture">
-                            <source media="(max-width: 600px)" srcset="public/assets/mix/hero/slide-03-dessert.webp">
-                            <img class="hero__image" src="public/assets/mix/hero/slide-01-pasta.webp" alt="Паста с креветками на столе в тёплом солнечном свете" width="1672" height="941" fetchpriority="high">
+                            <source media="(max-width: 600px)" srcset="public/assets/optimized/slide-03-dessert-480-3e222d4b34.webp 480w, public/assets/optimized/slide-03-dessert-800-f27ed50879.webp 800w, public/assets/optimized/slide-03-dessert-1200-b719987cb7.webp 1200w, public/assets/optimized/slide-03-dessert-1448-e4939d5217.webp 1448w" sizes="(max-width: 600px) min(174vw, 827px), (max-width: 800px) max(60vw, 560px), max(min(60vw, 888px), 747px)">
+                            <img class="hero__image" src="public/assets/optimized/slide-01-pasta-800-9a1206bcb5.webp" alt="Паста с креветками на столе в тёплом солнечном свете" width="1672" height="941" fetchpriority="high" srcset="public/assets/optimized/slide-01-pasta-480-aa5b72b25f.webp 480w, public/assets/optimized/slide-01-pasta-800-9a1206bcb5.webp 800w, public/assets/optimized/slide-01-pasta-1200-0475aa3401.webp 1200w, public/assets/optimized/slide-01-pasta-1600-0d710464d0.webp 1600w" sizes="(max-width: 600px) min(232vw, 1102px), (max-width: 800px) max(60vw, 747px), max(min(60vw, 888px), 996px)" decoding="async" loading="eager">
                         </picture>
                     </div>
                     <div class="hero__slide" role="group" aria-roledescription="слайд" aria-label="2 из 5: пицца" hidden>
                         <picture class="hero__picture">
-                            <img class="hero__image" src="public/assets/mix/hero/slide-02-pizza.webp" alt="Пицца с томатами и базиликом из печи" width="1448" height="1086" loading="lazy" decoding="async">
+                            <img class="hero__image" alt="Пицца с томатами и базиликом из печи" width="1448" height="1086" loading="lazy" decoding="async" data-src="public/assets/optimized/slide-02-pizza-800-ba5664cc42.webp" data-srcset="public/assets/optimized/slide-02-pizza-480-88fde9253f.webp 480w, public/assets/optimized/slide-02-pizza-800-ba5664cc42.webp 800w, public/assets/optimized/slide-02-pizza-1200-5c9f22df16.webp 1200w, public/assets/optimized/slide-02-pizza-1448-19f0468d86.webp 1448w" sizes="(max-width: 600px) min(174vw, 827px), (max-width: 800px) max(60vw, 560px), max(min(60vw, 888px), 747px)" fetchpriority="low" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
                         </picture>
                     </div>
                     <div class="hero__slide" role="group" aria-roledescription="слайд" aria-label="3 из 5: десерт" hidden>
                         <picture class="hero__picture">
-                            <source media="(max-width: 600px)" srcset="public/assets/mix/hero/slide-01-pasta.webp">
-                            <img class="hero__image" src="public/assets/mix/hero/slide-03-dessert.webp" alt="Тирамису с ягодами и чашка эспрессо" width="1448" height="1086" loading="lazy" decoding="async">
+                            <source media="(max-width: 600px)" data-srcset="public/assets/optimized/slide-01-pasta-480-aa5b72b25f.webp 480w, public/assets/optimized/slide-01-pasta-800-9a1206bcb5.webp 800w, public/assets/optimized/slide-01-pasta-1200-0475aa3401.webp 1200w, public/assets/optimized/slide-01-pasta-1600-0d710464d0.webp 1600w" sizes="(max-width: 600px) min(232vw, 1102px), (max-width: 800px) max(60vw, 747px), max(min(60vw, 888px), 996px)">
+                            <img class="hero__image" alt="Тирамису с ягодами и чашка эспрессо" width="1448" height="1086" loading="lazy" decoding="async" data-src="public/assets/optimized/slide-03-dessert-800-f27ed50879.webp" data-srcset="public/assets/optimized/slide-03-dessert-480-3e222d4b34.webp 480w, public/assets/optimized/slide-03-dessert-800-f27ed50879.webp 800w, public/assets/optimized/slide-03-dessert-1200-b719987cb7.webp 1200w, public/assets/optimized/slide-03-dessert-1448-e4939d5217.webp 1448w" sizes="(max-width: 600px) min(174vw, 827px), (max-width: 800px) max(60vw, 560px), max(min(60vw, 888px), 747px)" fetchpriority="low" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
                         </picture>
                     </div>
                     <div class="hero__slide" role="group" aria-roledescription="слайд" aria-label="4 из 5: атмосфера" hidden>
                         <picture class="hero__picture">
-                            <img class="hero__image" src="public/assets/mix/hero/slide-04-restaurant.webp" alt="Светлый зал с деревянными столами и зелёными растениями" width="1448" height="1086" loading="lazy" decoding="async">
+                            <img class="hero__image" alt="Светлый зал с деревянными столами и зелёными растениями" width="1448" height="1086" loading="lazy" decoding="async" data-src="public/assets/optimized/slide-04-restaurant-800-034b8a871f.webp" data-srcset="public/assets/optimized/slide-04-restaurant-480-53af9f45e4.webp 480w, public/assets/optimized/slide-04-restaurant-800-034b8a871f.webp 800w, public/assets/optimized/slide-04-restaurant-1200-245abaa71d.webp 1200w, public/assets/optimized/slide-04-restaurant-1448-309f8ba118.webp 1448w" sizes="(max-width: 600px) min(174vw, 827px), (max-width: 800px) max(60vw, 560px), max(min(60vw, 888px), 747px)" fetchpriority="low" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
                         </picture>
                     </div>
                     <div class="hero__slide" role="group" aria-roledescription="слайд" aria-label="5 из 5: завтрак" hidden>
                         <picture class="hero__picture">
-                            <img class="hero__image" src="public/assets/mix/hero/slide-05-breakfast.webp" alt="Свежая выпечка, хлеб и кофе на утреннем столе" width="1448" height="1086" loading="lazy" decoding="async">
+                            <img class="hero__image" alt="Свежая выпечка, хлеб и кофе на утреннем столе" width="1448" height="1086" loading="lazy" decoding="async" data-src="public/assets/optimized/slide-05-breakfast-800-ed9838ac47.webp" data-srcset="public/assets/optimized/slide-05-breakfast-480-af7dba9668.webp 480w, public/assets/optimized/slide-05-breakfast-800-ed9838ac47.webp 800w, public/assets/optimized/slide-05-breakfast-1200-f57e2660b4.webp 1200w, public/assets/optimized/slide-05-breakfast-1448-b5cee8179f.webp 1448w" sizes="(max-width: 600px) min(174vw, 827px), (max-width: 800px) max(60vw, 560px), max(min(60vw, 888px), 747px)" fetchpriority="low" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
                         </picture>
                     </div>
                 </div>
@@ -125,28 +136,28 @@
                 </div>
                 <ul class="advantages__list" id="advantages-track" aria-label="Преимущества кафе" tabindex="0">
                     <li class="advantages__item">
-                        <img class="advantages__photo" src="public/assets/mix/interior/cozy-corner.webp" alt="" width="1448" height="1086" loading="lazy" decoding="async">
+                        <img class="advantages__photo" src="public/assets/optimized/cozy-corner-800-9bee3c2a3a.webp" alt="" width="1448" height="1086" loading="lazy" decoding="async" srcset="public/assets/optimized/cozy-corner-480-3856208f89.webp 480w, public/assets/optimized/cozy-corner-800-9bee3c2a3a.webp 800w, public/assets/optimized/cozy-corner-1200-d3827b930c.webp 1200w, public/assets/optimized/cozy-corner-1448-37d5ea4850.webp 1448w" sizes="(max-width: 600px) 87vw, (max-width: 1160px) 46vw, max(23vw, 300px)" fetchpriority="low">
                         <div class="advantages__glass">
                             <span class="advantages__icon restaurant-icon restaurant-icon--atmosphere" aria-hidden="true"></span>
                             <h3 class="advantages__title">Уютная<br>атмосфера</h3>
                         </div>
                     </li>
                     <li class="advantages__item">
-                        <img class="advantages__photo" src="public/assets/mix/features/fresh-bakery.webp" alt="" width="1448" height="1086" loading="lazy" decoding="async">
+                        <img class="advantages__photo" src="public/assets/optimized/fresh-bakery-800-ed9838ac47.webp" alt="" width="1448" height="1086" loading="lazy" decoding="async" srcset="public/assets/optimized/fresh-bakery-480-af7dba9668.webp 480w, public/assets/optimized/fresh-bakery-800-ed9838ac47.webp 800w, public/assets/optimized/fresh-bakery-1200-f57e2660b4.webp 1200w, public/assets/optimized/fresh-bakery-1448-b5cee8179f.webp 1448w" sizes="(max-width: 600px) 87vw, (max-width: 1160px) 46vw, max(23vw, 300px)" fetchpriority="low">
                         <div class="advantages__glass">
                             <span class="advantages__icon restaurant-icon restaurant-icon--bakery" aria-hidden="true"></span>
                             <h3 class="advantages__title">Собственная<br>пекарня</h3>
                         </div>
                     </li>
                     <li class="advantages__item">
-                        <img class="advantages__photo" src="public/assets/mix/features/fresh-ingredients.webp" alt="" width="1254" height="1254" loading="lazy" decoding="async">
+                        <img class="advantages__photo" src="public/assets/optimized/fresh-ingredients-800-6319b61b5d.webp" alt="" width="1254" height="1254" loading="lazy" decoding="async" srcset="public/assets/optimized/fresh-ingredients-480-3a18ef7e69.webp 480w, public/assets/optimized/fresh-ingredients-800-6319b61b5d.webp 800w, public/assets/optimized/fresh-ingredients-1200-8bdd4939ce.webp 1200w, public/assets/optimized/fresh-ingredients-1254-e9d44dbdb2.webp 1254w" sizes="(max-width: 600px) 87vw, (max-width: 1160px) 46vw, max(23vw, 300px)" fetchpriority="low">
                         <div class="advantages__glass">
                             <span class="advantages__icon restaurant-icon restaurant-icon--ingredients" aria-hidden="true"></span>
                             <h3 class="advantages__title">Свежие<br>продукты</h3>
                         </div>
                     </li>
                     <li class="advantages__item">
-                        <img class="advantages__photo" src="public/assets/mix/features/coffee.webp" alt="" width="1672" height="941" loading="lazy" decoding="async">
+                        <img class="advantages__photo" src="public/assets/optimized/coffee-800-9464c454c8.webp" alt="" width="1672" height="941" loading="lazy" decoding="async" srcset="public/assets/optimized/coffee-480-bce2da1680.webp 480w, public/assets/optimized/coffee-800-9464c454c8.webp 800w, public/assets/optimized/coffee-1200-bef8b433c7.webp 1200w, public/assets/optimized/coffee-1600-8bc43ce1d8.webp 1600w" sizes="(max-width: 600px) 87vw, (max-width: 1160px) 46vw, max(23vw, 300px)" fetchpriority="low">
                         <div class="advantages__glass">
                             <span class="advantages__icon restaurant-icon restaurant-icon--coffee" aria-hidden="true"></span>
                             <h3 class="advantages__title">Зерновой<br>кофе</h3>
@@ -162,7 +173,7 @@
                     <a class="about__link button" href="#atmosphere">Заглянуть в MIX <span aria-hidden="true">→</span></a>
                 </div>
                 <figure class="about__figure">
-                    <img class="about__image" src="public/assets/mix/interior/main-room.webp" alt="Интерьер MIX: солнечный зал, дерево и зелень" width="1448" height="1086" loading="lazy" decoding="async">
+                    <img class="about__image" src="public/assets/optimized/main-room-800-6d79723c6b.webp" alt="Интерьер MIX: солнечный зал, дерево и зелень" width="1672" height="941" loading="lazy" decoding="async" srcset="public/assets/optimized/main-room-480-47a320eb92.webp 480w, public/assets/optimized/main-room-800-6d79723c6b.webp 800w, public/assets/optimized/main-room-1200-39208a1117.webp 1200w, public/assets/optimized/main-room-1600-d563c2d3cf.webp 1600w" sizes="(max-width: 600px) max(100vw, 462px), max(50vw, 711px)" fetchpriority="low">
                 </figure>
             </section>
             <div class="about-extras container">
@@ -170,19 +181,19 @@
                     <summary class="atmosphere__summary">Посмотреть интерьер MIX <span class="atmosphere__toggle" aria-hidden="true">+</span></summary>
                     <div class="atmosphere__gallery">
                         <figure class="atmosphere__figure atmosphere__figure--large">
-                            <img class="atmosphere__image" src="public/assets/mix/interior/sunlit-room.webp" alt="Солнечный зал MIX с большими окнами" width="1448" height="1086" loading="lazy" decoding="async">
+                            <img class="atmosphere__image" src="public/assets/optimized/sunlit-room-800-d322c91248.webp" alt="Солнечный зал MIX с большими окнами" width="1672" height="941" loading="lazy" decoding="async" srcset="public/assets/optimized/sunlit-room-480-d67cac0878.webp 480w, public/assets/optimized/sunlit-room-800-d322c91248.webp 800w, public/assets/optimized/sunlit-room-1200-cb36dd8505.webp 1200w, public/assets/optimized/sunlit-room-1600-0b3ca9cd6a.webp 1600w" sizes="(max-width: 600px) 100vw, 50vw" fetchpriority="low">
                             <figcaption class="atmosphere__caption">
                                 Солнечный зал
                             </figcaption>
                         </figure>
                         <figure class="atmosphere__figure">
-                            <img class="atmosphere__image" src="public/assets/mix/interior/bar-detail.webp" alt="Барная стойка с деревянной отделкой" width="1448" height="1086" loading="lazy" decoding="async">
+                            <img class="atmosphere__image" src="public/assets/optimized/bar-detail-800-9281109de0.webp" alt="Барная стойка с деревянной отделкой" width="1448" height="1086" loading="lazy" decoding="async" srcset="public/assets/optimized/bar-detail-480-3e62ce7f8e.webp 480w, public/assets/optimized/bar-detail-800-9281109de0.webp 800w, public/assets/optimized/bar-detail-1200-74e821bea9.webp 1200w, public/assets/optimized/bar-detail-1448-6476a1a288.webp 1448w" sizes="(max-width: 600px) 100vw, 50vw" fetchpriority="low">
                             <figcaption class="atmosphere__caption">
                                 Барная стойка
                             </figcaption>
                         </figure>
                         <figure class="atmosphere__figure">
-                            <img class="atmosphere__image" src="public/assets/mix/interior/cozy-corner.webp" alt="Уютный уголок с диваном и растениями" width="1448" height="1086" loading="lazy" decoding="async">
+                            <img class="atmosphere__image" src="public/assets/optimized/cozy-corner-800-9bee3c2a3a.webp" alt="Уютный уголок с диваном и растениями" width="1448" height="1086" loading="lazy" decoding="async" srcset="public/assets/optimized/cozy-corner-480-3856208f89.webp 480w, public/assets/optimized/cozy-corner-800-9bee3c2a3a.webp 800w, public/assets/optimized/cozy-corner-1200-d3827b930c.webp 1200w, public/assets/optimized/cozy-corner-1448-37d5ea4850.webp 1448w" sizes="(max-width: 600px) 100vw, 50vw" fetchpriority="low">
                             <figcaption class="atmosphere__caption">
                                 Уютный уголок
                             </figcaption>
@@ -219,7 +230,7 @@
                 <div class="favorite__cards" id="favorite-track" role="group" aria-label="Любимые блюда MIX" aria-describedby="favorite-instructions" tabindex="0">
                         <article class="dish" aria-labelledby="dish-soup">
                             <div class="dish__media">
-                                <img class="dish__image" src="public/assets/mix/food/soup-solyanka.webp" alt="Мясная солянка с лимоном и маслинами" width="1448" height="1086" loading="lazy" decoding="async" draggable="false">
+                                <img class="dish__image" src="public/assets/optimized/soup-solyanka-800-5937e7bfe9.webp" alt="Мясная солянка с лимоном и маслинами" width="1254" height="1254" loading="lazy" decoding="async" draggable="false" srcset="public/assets/optimized/soup-solyanka-480-0b9ce24adb.webp 480w, public/assets/optimized/soup-solyanka-800-5937e7bfe9.webp 800w, public/assets/optimized/soup-solyanka-1200-7ce5b12e9b.webp 1200w, public/assets/optimized/soup-solyanka-1254-b306fa3912.webp 1254w" sizes="(max-width: 699px) 87vw, (max-width: 1100px) 40vw, 29vw" fetchpriority="low">
                             </div>
                             <div class="dish__content">
                                 <div class="dish__heading-row">
@@ -236,7 +247,7 @@
                         </article>
                         <article class="dish" aria-labelledby="dish-salad">
                             <div class="dish__media">
-                                <img class="dish__image" src="public/assets/mix/food/salad-vitaminka-generated.webp" alt="Салат Витаминка со свежими овощами и страчателлой" width="1200" height="900" loading="lazy" decoding="async" draggable="false">
+                                <img class="dish__image" src="public/assets/optimized/salad-vitaminka-generated-800-1075d80c44.webp" alt="Салат Витаминка со свежими овощами и страчателлой" width="1200" height="900" loading="lazy" decoding="async" draggable="false" srcset="public/assets/optimized/salad-vitaminka-generated-480-bd6aa72152.webp 480w, public/assets/optimized/salad-vitaminka-generated-800-1075d80c44.webp 800w, public/assets/optimized/salad-vitaminka-generated-1200-405fd5c16f.webp 1200w" sizes="(max-width: 699px) 87vw, (max-width: 1100px) 40vw, 29vw" fetchpriority="low">
                             </div>
                             <div class="dish__content">
                                 <div class="dish__heading-row">
@@ -253,7 +264,7 @@
                         </article>
                         <article class="dish" aria-labelledby="dish-pizza">
                             <div class="dish__media">
-                                <img class="dish__image" src="public/assets/mix/food/pizza-spicy.webp" alt="Острая пицца с перцем и томатами" width="1448" height="1086" loading="lazy" decoding="async" draggable="false">
+                                <img class="dish__image" src="public/assets/optimized/pizza-spicy-800-104ac565d0.webp" alt="Острая пицца с перцем и томатами" width="1254" height="1254" loading="lazy" decoding="async" draggable="false" srcset="public/assets/optimized/pizza-spicy-480-0a3c437417.webp 480w, public/assets/optimized/pizza-spicy-800-104ac565d0.webp 800w, public/assets/optimized/pizza-spicy-1200-cf6c6764ea.webp 1200w, public/assets/optimized/pizza-spicy-1254-945c652ab8.webp 1254w" sizes="(max-width: 699px) 87vw, (max-width: 1100px) 40vw, 29vw" fetchpriority="low">
                             </div>
                             <div class="dish__content">
                                 <div class="dish__heading-row">
@@ -270,7 +281,7 @@
                         </article>
                         <article class="dish" aria-labelledby="dish-pasta">
                             <div class="dish__media">
-                                <img class="dish__image" src="public/assets/mix/food/pasta-shrimp-generated.webp" alt="Паста лингвини с креветками, томатами и базиликом" width="1200" height="900" loading="lazy" decoding="async" draggable="false">
+                                <img class="dish__image" src="public/assets/optimized/pasta-shrimp-generated-800-83c0750097.webp" alt="Паста лингвини с креветками, томатами и базиликом" width="1200" height="900" loading="lazy" decoding="async" draggable="false" srcset="public/assets/optimized/pasta-shrimp-generated-480-38118d7330.webp 480w, public/assets/optimized/pasta-shrimp-generated-800-83c0750097.webp 800w, public/assets/optimized/pasta-shrimp-generated-1200-7280719704.webp 1200w" sizes="(max-width: 699px) 87vw, (max-width: 1100px) 40vw, 29vw" fetchpriority="low">
                             </div>
                             <div class="dish__content">
                                 <div class="dish__heading-row">
@@ -287,7 +298,7 @@
                         </article>
                         <article class="dish" aria-labelledby="dish-chicken">
                             <div class="dish__media">
-                                <img class="dish__image" src="public/assets/mix/food/chicken-potatoes-generated.webp" alt="Румяное куриное филе с запечённым картофелем и травами" width="1200" height="900" loading="lazy" decoding="async" draggable="false">
+                                <img class="dish__image" src="public/assets/optimized/chicken-potatoes-generated-800-155b7ccd87.webp" alt="Румяное куриное филе с запечённым картофелем и травами" width="1200" height="900" loading="lazy" decoding="async" draggable="false" srcset="public/assets/optimized/chicken-potatoes-generated-480-46ef792229.webp 480w, public/assets/optimized/chicken-potatoes-generated-800-155b7ccd87.webp 800w, public/assets/optimized/chicken-potatoes-generated-1200-056214eaa9.webp 1200w" sizes="(max-width: 699px) 87vw, (max-width: 1100px) 40vw, 29vw" fetchpriority="low">
                             </div>
                             <div class="dish__content">
                                 <div class="dish__heading-row">
@@ -304,7 +315,7 @@
                         </article>
                         <article class="dish" aria-labelledby="dish-risotto">
                             <div class="dish__media">
-                                <img class="dish__image" src="public/assets/mix/food/risotto-mushrooms-generated.webp" alt="Сливочное ризотто с обжаренными грибами и пармезаном" width="1200" height="900" loading="lazy" decoding="async" draggable="false">
+                                <img class="dish__image" src="public/assets/optimized/risotto-mushrooms-generated-800-c10da837c9.webp" alt="Сливочное ризотто с обжаренными грибами и пармезаном" width="1200" height="900" loading="lazy" decoding="async" draggable="false" srcset="public/assets/optimized/risotto-mushrooms-generated-480-dba7685994.webp 480w, public/assets/optimized/risotto-mushrooms-generated-800-c10da837c9.webp 800w, public/assets/optimized/risotto-mushrooms-generated-1200-e561b3c397.webp 1200w" sizes="(max-width: 699px) 87vw, (max-width: 1100px) 40vw, 29vw" fetchpriority="low">
                             </div>
                             <div class="dish__content">
                                 <div class="dish__heading-row">
@@ -321,7 +332,7 @@
                         </article>
                         <article class="dish" aria-labelledby="dish-cheesecake">
                             <div class="dish__media">
-                                <img class="dish__image" src="public/assets/mix/food/cheesecake-berries-generated.webp" alt="Ванильный чизкейк с малиной, голубикой и ягодным соусом" width="1200" height="900" loading="lazy" decoding="async" draggable="false">
+                                <img class="dish__image" src="public/assets/optimized/cheesecake-berries-generated-800-234e9d9589.webp" alt="Ванильный чизкейк с малиной, голубикой и ягодным соусом" width="1200" height="900" loading="lazy" decoding="async" draggable="false" srcset="public/assets/optimized/cheesecake-berries-generated-480-681d7ff5c7.webp 480w, public/assets/optimized/cheesecake-berries-generated-800-234e9d9589.webp 800w, public/assets/optimized/cheesecake-berries-generated-1200-277028bb74.webp 1200w" sizes="(max-width: 699px) 87vw, (max-width: 1100px) 40vw, 29vw" fetchpriority="low">
                             </div>
                             <div class="dish__content">
                                 <div class="dish__heading-row">
@@ -524,14 +535,14 @@
                 </div>
                 <div class="contact__map">
                     <div class="contact__map-placeholder" id="map-placeholder">
-                        <img class="contact__map-icon" src="public/assets/mix/icons/pin.svg" alt="" width="48" height="48">
+                        <img class="contact__map-icon" src="public/assets/mix/icons/pin.svg" alt="" width="48" height="48" loading="lazy" decoding="async">
                         <h3 class="contact__map-heading">Обзорная карта</h3>
                         <p class="contact__map-description">Адрес кафе приведён для примера.</p>
                         <button class="contact__map-button button button--outline" id="load-map" type="button" hidden>Показать карту <span aria-hidden="true">↗</span></button>
                         <a class="contact__map-link text-link" href="https://yandex.ru/maps/?ll=0%2C0&amp;z=1" target="_blank" rel="noopener noreferrer">Открыть карту <span aria-hidden="true">↗</span></a>
 
                     </div>
-                    <iframe class="contact__iframe" id="contact-map" title="Обзорная карта" data-src="https://yandex.ru/map-widget/v1/?ll=0%2C0&amp;z=1" width="640" height="540" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen hidden>
+                    <iframe class="contact__iframe" id="contact-map" title="Обзорная карта" data-src="https://yandex.ru/map-widget/v1/?ll=0%2C0&amp;z=1" width="640" height="540" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen hidden>
                     </iframe>
                     <p class="visually-hidden" id="map-loading" role="status" hidden>Загружаем карту.</p>
                 </div>
@@ -540,13 +551,13 @@
         <footer class="footer" id="footer">
             <div class="footer__inner container">
                 <div class="footer__brand">
-                    <a class="footer__logo-link" href="#top" aria-label="MIX — наверх"><img class="footer__logo" src="public/assets/mix/brand/mix-brush-light.svg" alt="MIX" width="144" height="74" loading="lazy"></a>
+                    <a class="footer__logo-link" href="#top" aria-label="MIX — наверх"><img class="footer__logo" src="public/assets/mix/brand/mix-brush-light.svg" alt="MIX" width="144" height="74" loading="lazy" decoding="async"></a>
                     <p class="footer__tagline">Больше, чем еда.</p>
                     <div class="footer__socials" aria-label="Соцсети MIX: ссылки на страницы пока не добавлены">
-                        <span class="footer__social footer__social--youtube" role="img" aria-label="YouTube — профиль MIX пока не добавлен" title="YouTube — профиль MIX пока не добавлен"><img class="footer__social-icon" src="public/assets/mix/socials/youtube.svg" alt="" width="24" height="24"></span>
-                        <span class="footer__social footer__social--rutube" role="img" aria-label="RUTUBE — профиль MIX пока не добавлен" title="RUTUBE — профиль MIX пока не добавлен"><img class="footer__social-icon" src="public/assets/mix/socials/rutube.svg" alt="" width="24" height="24"></span>
-                        <span class="footer__social footer__social--vk" role="img" aria-label="VK — профиль MIX пока не добавлен" title="VK — профиль MIX пока не добавлен"><img class="footer__social-icon" src="public/assets/mix/socials/vk.svg" alt="" width="24" height="24"></span>
-                        <span class="footer__social footer__social--max" role="img" aria-label="MAX — профиль MIX пока не добавлен" title="MAX — профиль MIX пока не добавлен"><img class="footer__social-icon" src="public/assets/mix/socials/max.png" alt="" width="24" height="24"></span>
+                        <span class="footer__social footer__social--youtube" role="img" aria-label="YouTube — профиль MIX пока не добавлен" title="YouTube — профиль MIX пока не добавлен"><img class="footer__social-icon" src="public/assets/mix/socials/youtube.svg" alt="" width="24" height="24" loading="lazy" decoding="async"></span>
+                        <span class="footer__social footer__social--rutube" role="img" aria-label="RUTUBE — профиль MIX пока не добавлен" title="RUTUBE — профиль MIX пока не добавлен"><img class="footer__social-icon" src="public/assets/mix/socials/rutube.svg" alt="" width="24" height="24" loading="lazy" decoding="async"></span>
+                        <span class="footer__social footer__social--vk" role="img" aria-label="VK — профиль MIX пока не добавлен" title="VK — профиль MIX пока не добавлен"><img class="footer__social-icon" src="public/assets/mix/socials/vk.svg" alt="" width="24" height="24" loading="lazy" decoding="async"></span>
+                        <span class="footer__social footer__social--max" role="img" aria-label="MAX — профиль MIX пока не добавлен" title="MAX — профиль MIX пока не добавлен"><img class="footer__social-icon" src="public/assets/mix/socials/max.png" alt="" width="24" height="24" loading="lazy" decoding="async"></span>
                     </div>
                 </div>
                 <nav class="footer__nav" aria-label="Навигация в подвале">

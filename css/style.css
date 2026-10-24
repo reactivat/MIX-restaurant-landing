@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Inter';
-    src: url(../public/fonts/Inter/Inter_18pt-Regular.woff2) format('woff2');
+    src: url(../public/assets/optimized/Inter_18pt-Regular-latin-cyrillic-e8718a3eb7.woff2) format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
     font-family: 'Inter';
-    src: url(../public/fonts/Inter/Inter_18pt-Medium.woff2) format('woff2');
+    src: url(../public/assets/optimized/Inter_18pt-Medium-latin-cyrillic-c15941622f.woff2) format('woff2');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
     font-family: 'Inter';
-    src: url(../public/fonts/Inter/Inter_18pt-SemiBold.woff2) format('woff2');
+    src: url(../public/assets/optimized/Inter_18pt-SemiBold-latin-cyrillic-033702706d.woff2) format('woff2');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
     font-family: 'Inter';
-    src: url(../public/fonts/Inter/Inter_18pt-Bold.woff2) format('woff2');
+    src: url(../public/assets/optimized/Inter_18pt-Bold-latin-cyrillic-9454da995e.woff2) format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -60,8 +60,12 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     scroll-padding-top: calc(var(--header-height) + 16px);
+}
+
+html.page-ready {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -650,11 +654,16 @@ a {
 
 /* Два мягких изгиба обрамляют фотографию между светлыми секциями. */
 .photo-window {
-    --photo-window-image: url(../public/assets/mix/interior/bar-detail.webp);
+    --photo-window-image: none;
     position: relative;
     min-height: clamp(440px, 52vw, 640px);
     margin-block: 36px 16px;
     background: var(--photo-window-image) center 48% / cover fixed;
+}
+
+.photo-window--loaded,
+html:not(.js) .photo-window {
+    --photo-window-image: url(../public/assets/optimized/bar-detail-1200-74e821bea9.webp);
 }
 
 .photo-window__image {
@@ -1925,6 +1934,21 @@ a {
 }
 
 @media (max-width: 800px) {
+    /* Keep the mobile menu closed before the deferred script initializes it. */
+    .js .header:not(.header--enhanced) .header__menu-shell {
+        display: none;
+    }
+
+    .js .header__toggle[hidden] {
+        display: inline-flex !important;
+    }
+
+    .js:not(.page-ready) .header__menu-shell,
+    .js:not(.page-ready) .header__menu-shell *,
+    .js:not(.page-ready) .header__button {
+        transition: none !important;
+    }
+
     :root {
         --header-height: 72px;
         --page-gutter: 20px;
@@ -2699,7 +2723,8 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    html {
+    html,
+    html.page-ready {
         scroll-behavior: auto;
     }
 
@@ -2730,3 +2755,14 @@ a {
         scale: none !important;
     }
 }
+
+/* Responsive photo background: generated. */
+@media (max-width: 800px) and (max-resolution: 1.49dppx) {
+    .photo-window--loaded,
+    html:not(.js) .photo-window { --photo-window-image: url(../public/assets/optimized/bar-detail-800-9281109de0.webp); }
+}
+@media (min-resolution: 1.5dppx) {
+    .photo-window--loaded,
+    html:not(.js) .photo-window { --photo-window-image: url(../public/assets/optimized/bar-detail-1448-6476a1a288.webp); }
+}
+/* End responsive photo background. */

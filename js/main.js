@@ -45,6 +45,7 @@
                     return;
                 }
                 observer.unobserve(entry.target);
+                if (!document.documentElement.classList.contains('page-ready')) return;
                 if (entry.target.classList.contains('dish')) {
                     const index = Array.from(entry.target.parentElement.children).indexOf(entry.target);
                     const delay = window.matchMedia('(min-width: 801px)').matches ? index * 65 : 0;
@@ -55,7 +56,7 @@
             });
         }, { threshold: 0.08 });
 
-        document.querySelectorAll('.hero__content, .advantages__list, .about__content, .about__figure, .favorite__header, .dish, .order, .reviews__header, .contact__info').forEach(function (element) {
+        document.querySelectorAll('.advantages__list, .about__content, .about__figure, .favorite__header, .dish, .order, .reviews__header, .contact__info').forEach(function (element) {
             observer.observe(element);
         });
 
@@ -136,6 +137,7 @@
         let updateQueued = false;
         let menuOpen = false;
         let curveFrame = 0;
+        let originalBodyPadding = null;
         const inertElements = new Map();
 
         links.forEach(function (link, index) {
@@ -180,6 +182,7 @@
         window.addEventListener('resize', queueCurrentLinkUpdate);
         window.addEventListener('hashchange', queueCurrentLinkUpdate);
         window.addEventListener('load', queueCurrentLinkUpdate);
+        window.addEventListener('pageshow', queueCurrentLinkUpdate);
         queueCurrentLinkUpdate();
 
         function drawCurve(amount) {
@@ -220,6 +223,17 @@
             open = open && mobile.matches;
             const changed = open !== menuOpen;
             menuOpen = open;
+            if (changed && open) {
+                // Keep content width unchanged when a classic scrollbar disappears.
+                const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+                originalBodyPadding = document.body.style.paddingRight;
+                if (scrollbarWidth > 0) {
+                    document.body.style.paddingRight = (parseFloat(getComputedStyle(document.body).paddingRight) + scrollbarWidth) + 'px';
+                }
+            } else if (!open && originalBodyPadding !== null) {
+                document.body.style.paddingRight = originalBodyPadding;
+                originalBodyPadding = null;
+            }
             header.classList.toggle('header--menu-open', open);
             document.body.classList.toggle('menu-open', open);
             toggle.setAttribute('aria-expanded', String(open));
@@ -304,6 +318,11 @@
                 drawCurve(menuOpen ? 1 : 0);
             }
         });
+        window.addEventListener('pagehide', function () {
+            setMenu(false, false);
+            cancelAnimationFrame(curveFrame);
+            drawCurve(0);
+        });
         setMenu(false, false);
     }
 
@@ -335,9 +354,16 @@
         const mobileHero = window.matchMedia('(max-width: 600px)');
         const switchPanel = createPanelSwitcher(slides, 600, 0);
         const topics = ['Паста и хорошая компания', 'Пицца для вкусных встреч', 'Время для сладкой паузы', 'Атмосфера, в которой хорошо', 'Утро начинается со вкуса'];
+        const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        function conserveData() {
+            return connection && (connection.saveData || /(^|-)2g$/.test(connection.effectiveType));
+        }
         let current = 0;
+        let requested = 0;
         let timer = null;
+        let prefetchTimer = null;
         let userPaused = false;
+        let explicitPlayback = false;
         let switching = false;
         let focused = false;
         let visible = true;
@@ -365,17 +391,25 @@
         mobileHero.addEventListener('change', syncSlideDescriptions);
 
         function syncTimer() {
+            const paused = userPaused || (conserveData() && !explicitPlayback);
             pause.hidden = reducedMotion.matches;
-            pause.setAttribute('aria-pressed', String(userPaused));
-            pause.setAttribute('aria-label', userPaused ? 'Запустить слайдер' : 'Приостановить слайдер');
-            pause.textContent = userPaused ? 'Запустить смену фото' : 'Приостановить смену фото';
+            pause.setAttribute('aria-pressed', String(Boolean(paused)));
+            pause.setAttribute('aria-label', paused ? 'Запустить слайдер' : 'Приостановить слайдер');
+            pause.textContent = paused ? 'Запустить смену фото' : 'Приостановить смену фото';
 
-            const running = !userPaused && !switching && !focused && visible && !document.hidden && !reducedMotion.matches;
+            const running = !paused && !switching && !focused && visible && !document.hidden && !reducedMotion.matches;
 
             if (!running) {
                 window.clearTimeout(timer);
+                window.clearTimeout(prefetchTimer);
                 timer = null;
+                prefetchTimer = null;
             } else if (timer === null) {
+                // Keep the next photo off the first screen's critical network path.
+                prefetchTimer = window.setTimeout(function () {
+                    prefetchTimer = null;
+                    preloadNext();
+                }, 2500);
                 timer = window.setTimeout(function () {
                     timer = null;
                     showSlide(current + 1, false);
@@ -383,18 +417,34 @@
             }
         }
 
-        function preloadNext() {
-            const image = slides[(current + 1) % slides.length].querySelector('img');
+        function prepareSlide(index) {
+            const slide = slides[index];
+            slide.querySelectorAll('source[data-srcset]').forEach(function (source) {
+                source.srcset = source.dataset.srcset;
+                source.removeAttribute('data-srcset');
+            });
+            const image = slide.querySelector('img');
             image.loading = 'eager';
-            image.decode().catch(function () { /* Повторная попытка будет при переключении. */ });
+            if (image.dataset.srcset) {
+                image.srcset = image.dataset.srcset;
+                image.removeAttribute('data-srcset');
+            }
+            if (image.dataset.src) {
+                image.src = image.dataset.src;
+                image.removeAttribute('data-src');
+            }
+            return image.decode();
+        }
+
+        function preloadNext() {
+            if ((conserveData() && !explicitPlayback) || document.hidden || !visible || userPaused || reducedMotion.matches) return;
+            prepareSlide((current + 1) % slides.length).catch(function () { /* Try again on navigation. */ });
         }
 
         async function showSlide(index, manual) {
-            current = (index + slides.length) % slides.length;
-            const target = current;
+            const target = (index + slides.length) % slides.length;
+            requested = target;
             const pending = ++request;
-            const image = slides[target].querySelector('img');
-            image.loading = 'eager';
             switching = true;
 
             if (manual) {
@@ -403,18 +453,19 @@
             syncTimer();
 
             try {
-                await image.decode();
+                await prepareSlide(target);
 
                 if (pending !== request) {
                     return;
                 }
 
+                current = requested = target;
                 switchPanel(target);
                 status.setAttribute('aria-live', manual ? 'polite' : 'off');
                 status.textContent = 'Слайд ' + (target + 1) + ' из ' + slides.length + ': ' + slideTopic(target) + '.';
-                preloadNext();
             } catch (error) {
                 // При ошибке загрузки сохраняем предыдущую фотографию.
+                if (pending === request) requested = current;
             } finally {
                 if (pending === request) {
                     switching = false;
@@ -424,12 +475,18 @@
         }
 
         pause.addEventListener('click', function () {
-            userPaused = !userPaused;
+            if (conserveData() && !explicitPlayback) {
+                explicitPlayback = true;
+                userPaused = false;
+            } else {
+                userPaused = !userPaused;
+            }
             syncTimer();
         });
 
         hero.addEventListener('keydown', function (event) {
-            const keys = { ArrowLeft: current - 1, ArrowRight: current + 1, Home: 0, End: slides.length - 1 };
+            if (event.altKey || event.ctrlKey || event.metaKey) return;
+            const keys = { ArrowLeft: requested - 1, ArrowRight: requested + 1, Home: 0, End: slides.length - 1 };
 
             if (Object.hasOwn(keys, event.key)) {
                 event.preventDefault();
@@ -465,6 +522,13 @@
         hero.addEventListener('pointercancel', function () { touchStart = null; });
         reducedMotion.addEventListener('change', syncTimer);
         document.addEventListener('visibilitychange', syncTimer);
+        window.addEventListener('pageshow', syncTimer);
+        window.addEventListener('pagehide', function () {
+            window.clearTimeout(timer);
+            window.clearTimeout(prefetchTimer);
+            timer = prefetchTimer = null;
+        });
+        if (connection && connection.addEventListener) connection.addEventListener('change', syncTimer);
 
         if ('IntersectionObserver' in window) {
             new IntersectionObserver(function (entries) {
@@ -473,7 +537,6 @@
             }, { threshold: 0.15 }).observe(hero);
         }
 
-        slides[0].querySelector('img').decode().then(preloadNext, preloadNext);
         syncTimer();
     }
 
@@ -759,18 +822,8 @@
 
         button.addEventListener('click', function () { loadMap(true); });
 
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver(function (entries) {
-                if (entries[0].isIntersecting) {
-                    loadMap(false);
-                    observer.disconnect();
-                }
-            });
-            observer.observe(document.querySelector('.contact__map'));
-        }
-
         frame.addEventListener('load', function () {
-            status.textContent = 'Карта загружена.';
+            if (loaded) status.textContent = 'Карта загружена.';
         });
     }
 
@@ -792,6 +845,32 @@
         update();
     }
 
+    function loadWhenNear(selector, source) {
+        const section = document.querySelector(selector);
+        if (!section) return;
+        let started = false;
+        let observer;
+        function load() {
+            if (started) return;
+            started = true;
+            if (observer) observer.disconnect();
+            const script = document.createElement('script');
+            script.src = source;
+            script.async = true;
+            script.fetchPriority = 'low';
+            document.head.append(script);
+        }
+        if ('IntersectionObserver' in window) {
+            observer = new IntersectionObserver(function (entries) {
+                if (entries[0].isIntersecting) load();
+            }, { rootMargin: '600px' });
+            observer.observe(section);
+            section.addEventListener('focusin', load, { once: true });
+        } else {
+            load();
+        }
+    }
+
     initNavigation();
     initSectionLinks();
     initHero();
@@ -800,4 +879,6 @@
     initMap();
     initBackTop();
     initMotion();
+    loadWhenNear('.photo-window', 'js/photo-window.js?v=03e4c71b91');
+    loadWhenNear('.favorite', 'js/favorites.js?v=371ab3e6a5');
 })();

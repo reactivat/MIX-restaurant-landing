@@ -6,12 +6,16 @@
 
     const mobile = window.matchMedia('(max-width: 800px)');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    let visible = !('IntersectionObserver' in window);
     let enabled = false;
     let request = null;
 
+    frame.classList.add('photo-window--loaded');
+
     function paint() {
         request = null;
-        if (!enabled || document.hidden) return;
+        if (!enabled || !visible || document.hidden) return;
         const rect = frame.getBoundingClientRect();
         const viewportHeight = window.innerHeight;
         if (rect.bottom <= 0 || rect.top >= viewportHeight) return;
@@ -23,13 +27,13 @@
     }
 
     function queuePaint() {
-        if (enabled && !document.hidden && request === null) {
+        if (enabled && visible && !document.hidden && request === null) {
             request = window.requestAnimationFrame(paint);
         }
     }
 
     function sync() {
-        enabled = mobile.matches && !reducedMotion.matches;
+        enabled = mobile.matches && !reducedMotion.matches && !(connection && connection.saveData);
         frame.classList.toggle('photo-window--animated', enabled);
         if (request !== null) window.cancelAnimationFrame(request);
         request = null;
@@ -43,5 +47,12 @@
     document.addEventListener('visibilitychange', queuePaint);
     mobile.addEventListener('change', sync);
     reducedMotion.addEventListener('change', sync);
+    if (connection && connection.addEventListener) connection.addEventListener('change', sync);
+    if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+            visible = entries[0].isIntersecting;
+            queuePaint();
+        }, { rootMargin: '80px' }).observe(frame);
+    }
     sync();
 })();

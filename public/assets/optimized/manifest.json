@@ -1,0 +1,627 @@
+{
+  "images": {
+    "public/assets/mix/features/coffee.webp": {
+      "width": 1672,
+      "height": 941,
+      "originalBytes": 397332,
+      "variants": [
+        {
+          "width": 480,
+          "height": 270,
+          "bytes": 39938,
+          "src": "public/assets/optimized/coffee-480-bce2da1680.webp"
+        },
+        {
+          "width": 800,
+          "height": 450,
+          "bytes": 94556,
+          "src": "public/assets/optimized/coffee-800-9464c454c8.webp"
+        },
+        {
+          "width": 1200,
+          "height": 675,
+          "bytes": 180670,
+          "src": "public/assets/optimized/coffee-1200-bef8b433c7.webp"
+        },
+        {
+          "width": 1600,
+          "height": 900,
+          "bytes": 267242,
+          "src": "public/assets/optimized/coffee-1600-8bc43ce1d8.webp"
+        }
+      ]
+    },
+    "public/assets/mix/features/fresh-bakery.webp": {
+      "width": 1448,
+      "height": 1086,
+      "originalBytes": 337292,
+      "variants": [
+        {
+          "width": 480,
+          "height": 360,
+          "bytes": 56266,
+          "src": "public/assets/optimized/fresh-bakery-480-af7dba9668.webp"
+        },
+        {
+          "width": 800,
+          "height": 600,
+          "bytes": 116870,
+          "src": "public/assets/optimized/fresh-bakery-800-ed9838ac47.webp"
+        },
+        {
+          "width": 1200,
+          "height": 900,
+          "bytes": 195986,
+          "src": "public/assets/optimized/fresh-bakery-1200-f57e2660b4.webp"
+        },
+        {
+          "width": 1448,
+          "height": 1086,
+          "bytes": 255068,
+          "src": "public/assets/optimized/fresh-bakery-1448-b5cee8179f.webp"
+        }
+      ]
+    },
+    "public/assets/mix/features/fresh-ingredients.webp": {
+      "width": 1254,
+      "height": 1254,
+      "originalBytes": 320932,
+      "variants": [
+        {
+          "width": 480,
+          "height": 480,
+          "bytes": 61220,
+          "src": "public/assets/optimized/fresh-ingredients-480-3a18ef7e69.webp"
+        },
+        {
+          "width": 800,
+          "height": 800,
+          "bytes": 130458,
+          "src": "public/assets/optimized/fresh-ingredients-800-6319b61b5d.webp"
+        },
+        {
+          "width": 1200,
+          "height": 1200,
+          "bytes": 222098,
+          "src": "public/assets/optimized/fresh-ingredients-1200-8bdd4939ce.webp"
+        },
+        {
+          "width": 1254,
+          "height": 1254,
+          "bytes": 245750,
+          "src": "public/assets/optimized/fresh-ingredients-1254-e9d44dbdb2.webp"
+        }
+      ]
+    },
+    "public/assets/mix/food/cheesecake-berries-generated.webp": {
+      "width": 1200,
+      "height": 900,
+      "originalBytes": 151344,
+      "variants": [
+        {
+          "width": 480,
+          "height": 360,
+          "bytes": 26298,
+          "src": "public/assets/optimized/cheesecake-berries-generated-480-681d7ff5c7.webp"
+        },
+        {
+          "width": 800,
+          "height": 600,
+          "bytes": 56110,
+          "src": "public/assets/optimized/cheesecake-berries-generated-800-234e9d9589.webp"
+        },
+        {
+          "width": 1200,
+          "height": 900,
+          "bytes": 107868,
+          "src": "public/assets/optimized/cheesecake-berries-generated-1200-277028bb74.webp"
+        }
+      ]
+    },
+    "public/assets/mix/food/chicken-potatoes-generated.webp": {
+      "width": 1200,
+      "height": 900,
+      "originalBytes": 250952,
+      "variants": [
+        {
+          "width": 480,
+          "height": 360,
+          "bytes": 43720,
+          "src": "public/assets/optimized/chicken-potatoes-generated-480-46ef792229.webp"
+        },
+        {
+          "width": 800,
+          "height": 600,
+          "bytes": 99748,
+          "src": "public/assets/optimized/chicken-potatoes-generated-800-155b7ccd87.webp"
+        },
+        {
+          "width": 1200,
+          "height": 900,
+          "bytes": 185094,
+          "src": "public/assets/optimized/chicken-potatoes-generated-1200-056214eaa9.webp"
+        }
+      ]
+    },
+    "public/assets/mix/food/pasta-shrimp-generated.webp": {
+      "width": 1200,
+      "height": 900,
+      "originalBytes": 211136,
+      "variants": [
+        {
+          "width": 480,
+          "height": 360,
+          "bytes": 39816,
+          "src": "public/assets/optimized/pasta-shrimp-generated-480-38118d7330.webp"
+        },
+        {
+          "width": 800,
+          "height": 600,
+          "bytes": 85830,
+          "src": "public/assets/optimized/pasta-shrimp-generated-800-83c0750097.webp"
+        },
+        {
+          "width": 1200,
+          "height": 900,
+          "bytes": 156290,
+          "src": "public/assets/optimized/pasta-shrimp-generated-1200-7280719704.webp"
+        }
+      ]
+    },
+    "public/assets/mix/food/pizza-spicy.webp": {
+      "width": 1254,
+      "height": 1254,
+      "originalBytes": 505868,
+      "variants": [
+        {
+          "width": 480,
+          "height": 480,
+          "bytes": 83918,
+          "src": "public/assets/optimized/pizza-spicy-480-0a3c437417.webp"
+        },
+        {
+          "width": 800,
+          "height": 800,
+          "bytes": 195196,
+          "src": "public/assets/optimized/pizza-spicy-800-104ac565d0.webp"
+        },
+        {
+          "width": 1200,
+          "height": 1200,
+          "bytes": 352344,
+          "src": "public/assets/optimized/pizza-spicy-1200-cf6c6764ea.webp"
+        },
+        {
+          "width": 1254,
+          "height": 1254,
+          "bytes": 397296,
+          "src": "public/assets/optimized/pizza-spicy-1254-945c652ab8.webp"
+        }
+      ]
+    },
+    "public/assets/mix/food/risotto-mushrooms-generated.webp": {
+      "width": 1200,
+      "height": 900,
+      "originalBytes": 218242,
+      "variants": [
+        {
+          "width": 480,
+          "height": 360,
+          "bytes": 39290,
+          "src": "public/assets/optimized/risotto-mushrooms-generated-480-dba7685994.webp"
+        },
+        {
+          "width": 800,
+          "height": 600,
+          "bytes": 86924,
+          "src": "public/assets/optimized/risotto-mushrooms-generated-800-c10da837c9.webp"
+        },
+        {
+          "width": 1200,
+          "height": 900,
+          "bytes": 165394,
+          "src": "public/assets/optimized/risotto-mushrooms-generated-1200-e561b3c397.webp"
+        }
+      ]
+    },
+    "public/assets/mix/food/salad-vitaminka-generated.webp": {
+      "width": 1200,
+      "height": 900,
+      "originalBytes": 245508,
+      "variants": [
+        {
+          "width": 480,
+          "height": 360,
+          "bytes": 43980,
+          "src": "public/assets/optimized/salad-vitaminka-generated-480-bd6aa72152.webp"
+        },
+        {
+          "width": 800,
+          "height": 600,
+          "bytes": 97944,
+          "src": "public/assets/optimized/salad-vitaminka-generated-800-1075d80c44.webp"
+        },
+        {
+          "width": 1200,
+          "height": 900,
+          "bytes": 184146,
+          "src": "public/assets/optimized/salad-vitaminka-generated-1200-405fd5c16f.webp"
+        }
+      ]
+    },
+    "public/assets/mix/food/soup-solyanka.webp": {
+      "width": 1254,
+      "height": 1254,
+      "originalBytes": 315090,
+      "variants": [
+        {
+          "width": 480,
+          "height": 480,
+          "bytes": 57348,
+          "src": "public/assets/optimized/soup-solyanka-480-0b9ce24adb.webp"
+        },
+        {
+          "width": 800,
+          "height": 800,
+          "bytes": 122742,
+          "src": "public/assets/optimized/soup-solyanka-800-5937e7bfe9.webp"
+        },
+        {
+          "width": 1200,
+          "height": 1200,
+          "bytes": 209136,
+          "src": "public/assets/optimized/soup-solyanka-1200-7ce5b12e9b.webp"
+        },
+        {
+          "width": 1254,
+          "height": 1254,
+          "bytes": 235252,
+          "src": "public/assets/optimized/soup-solyanka-1254-b306fa3912.webp"
+        }
+      ]
+    },
+    "public/assets/mix/hero/slide-01-pasta.webp": {
+      "width": 1672,
+      "height": 941,
+      "originalBytes": 391514,
+      "variants": [
+        {
+          "width": 480,
+          "height": 270,
+          "bytes": 40888,
+          "src": "public/assets/optimized/slide-01-pasta-480-aa5b72b25f.webp"
+        },
+        {
+          "width": 800,
+          "height": 450,
+          "bytes": 94296,
+          "src": "public/assets/optimized/slide-01-pasta-800-9a1206bcb5.webp"
+        },
+        {
+          "width": 1200,
+          "height": 675,
+          "bytes": 174514,
+          "src": "public/assets/optimized/slide-01-pasta-1200-0475aa3401.webp"
+        },
+        {
+          "width": 1600,
+          "height": 900,
+          "bytes": 262742,
+          "src": "public/assets/optimized/slide-01-pasta-1600-0d710464d0.webp"
+        }
+      ]
+    },
+    "public/assets/mix/hero/slide-02-pizza.webp": {
+      "width": 1448,
+      "height": 1086,
+      "originalBytes": 277684,
+      "variants": [
+        {
+          "width": 480,
+          "height": 360,
+          "bytes": 48084,
+          "src": "public/assets/optimized/slide-02-pizza-480-88fde9253f.webp"
+        },
+        {
+          "width": 800,
+          "height": 600,
+          "bytes": 96706,
+          "src": "public/assets/optimized/slide-02-pizza-800-ba5664cc42.webp"
+        },
+        {
+          "width": 1200,
+          "height": 900,
+          "bytes": 161880,
+          "src": "public/assets/optimized/slide-02-pizza-1200-5c9f22df16.webp"
+        },
+        {
+          "width": 1448,
+          "height": 1086,
+          "bytes": 208982,
+          "src": "public/assets/optimized/slide-02-pizza-1448-19f0468d86.webp"
+        }
+      ]
+    },
+    "public/assets/mix/hero/slide-03-dessert.webp": {
+      "width": 1448,
+      "height": 1086,
+      "originalBytes": 276630,
+      "variants": [
+        {
+          "width": 480,
+          "height": 360,
+          "bytes": 44934,
+          "src": "public/assets/optimized/slide-03-dessert-480-3e222d4b34.webp"
+        },
+        {
+          "width": 800,
+          "height": 600,
+          "bytes": 93794,
+          "src": "public/assets/optimized/slide-03-dessert-800-f27ed50879.webp"
+        },
+        {
+          "width": 1200,
+          "height": 900,
+          "bytes": 159602,
+          "src": "public/assets/optimized/slide-03-dessert-1200-b719987cb7.webp"
+        },
+        {
+          "width": 1448,
+          "height": 1086,
+          "bytes": 208040,
+          "src": "public/assets/optimized/slide-03-dessert-1448-e4939d5217.webp"
+        }
+      ]
+    },
+    "public/assets/mix/hero/slide-04-restaurant.webp": {
+      "width": 1448,
+      "height": 1086,
+      "originalBytes": 355776,
+      "variants": [
+        {
+          "width": 480,
+          "height": 360,
+          "bytes": 52876,
+          "src": "public/assets/optimized/slide-04-restaurant-480-53af9f45e4.webp"
+        },
+        {
+          "width": 800,
+          "height": 600,
+          "bytes": 115334,
+          "src": "public/assets/optimized/slide-04-restaurant-800-034b8a871f.webp"
+        },
+        {
+          "width": 1200,
+          "height": 900,
+          "bytes": 205606,
+          "src": "public/assets/optimized/slide-04-restaurant-1200-245abaa71d.webp"
+        },
+        {
+          "width": 1448,
+          "height": 1086,
+          "bytes": 273356,
+          "src": "public/assets/optimized/slide-04-restaurant-1448-309f8ba118.webp"
+        }
+      ]
+    },
+    "public/assets/mix/hero/slide-05-breakfast.webp": {
+      "width": 1448,
+      "height": 1086,
+      "originalBytes": 337292,
+      "variants": [
+        {
+          "width": 480,
+          "height": 360,
+          "bytes": 56266,
+          "src": "public/assets/optimized/slide-05-breakfast-480-af7dba9668.webp"
+        },
+        {
+          "width": 800,
+          "height": 600,
+          "bytes": 116870,
+          "src": "public/assets/optimized/slide-05-breakfast-800-ed9838ac47.webp"
+        },
+        {
+          "width": 1200,
+          "height": 900,
+          "bytes": 195986,
+          "src": "public/assets/optimized/slide-05-breakfast-1200-f57e2660b4.webp"
+        },
+        {
+          "width": 1448,
+          "height": 1086,
+          "bytes": 255068,
+          "src": "public/assets/optimized/slide-05-breakfast-1448-b5cee8179f.webp"
+        }
+      ]
+    },
+    "public/assets/mix/interior/bar-detail.webp": {
+      "width": 1448,
+      "height": 1086,
+      "originalBytes": 300562,
+      "variants": [
+        {
+          "width": 480,
+          "height": 360,
+          "bytes": 51150,
+          "src": "public/assets/optimized/bar-detail-480-3e62ce7f8e.webp"
+        },
+        {
+          "width": 800,
+          "height": 600,
+          "bytes": 105106,
+          "src": "public/assets/optimized/bar-detail-800-9281109de0.webp"
+        },
+        {
+          "width": 1200,
+          "height": 900,
+          "bytes": 174918,
+          "src": "public/assets/optimized/bar-detail-1200-74e821bea9.webp"
+        },
+        {
+          "width": 1448,
+          "height": 1086,
+          "bytes": 232168,
+          "src": "public/assets/optimized/bar-detail-1448-6476a1a288.webp"
+        }
+      ]
+    },
+    "public/assets/mix/interior/cozy-corner.webp": {
+      "width": 1448,
+      "height": 1086,
+      "originalBytes": 333832,
+      "variants": [
+        {
+          "width": 480,
+          "height": 360,
+          "bytes": 47028,
+          "src": "public/assets/optimized/cozy-corner-480-3856208f89.webp"
+        },
+        {
+          "width": 800,
+          "height": 600,
+          "bytes": 104620,
+          "src": "public/assets/optimized/cozy-corner-800-9bee3c2a3a.webp"
+        },
+        {
+          "width": 1200,
+          "height": 900,
+          "bytes": 182324,
+          "src": "public/assets/optimized/cozy-corner-1200-d3827b930c.webp"
+        },
+        {
+          "width": 1448,
+          "height": 1086,
+          "bytes": 236100,
+          "src": "public/assets/optimized/cozy-corner-1448-37d5ea4850.webp"
+        }
+      ]
+    },
+    "public/assets/mix/interior/main-room.webp": {
+      "width": 1672,
+      "height": 941,
+      "originalBytes": 336952,
+      "variants": [
+        {
+          "width": 480,
+          "height": 270,
+          "bytes": 38260,
+          "src": "public/assets/optimized/main-room-480-47a320eb92.webp"
+        },
+        {
+          "width": 800,
+          "height": 450,
+          "bytes": 86250,
+          "src": "public/assets/optimized/main-room-800-6d79723c6b.webp"
+        },
+        {
+          "width": 1200,
+          "height": 675,
+          "bytes": 155064,
+          "src": "public/assets/optimized/main-room-1200-39208a1117.webp"
+        },
+        {
+          "width": 1600,
+          "height": 900,
+          "bytes": 226444,
+          "src": "public/assets/optimized/main-room-1600-d563c2d3cf.webp"
+        }
+      ]
+    },
+    "public/assets/mix/interior/sunlit-room.webp": {
+      "width": 1672,
+      "height": 941,
+      "originalBytes": 435460,
+      "variants": [
+        {
+          "width": 480,
+          "height": 270,
+          "bytes": 47670,
+          "src": "public/assets/optimized/sunlit-room-480-d67cac0878.webp"
+        },
+        {
+          "width": 800,
+          "height": 450,
+          "bytes": 110898,
+          "src": "public/assets/optimized/sunlit-room-800-d322c91248.webp"
+        },
+        {
+          "width": 1200,
+          "height": 675,
+          "bytes": 206796,
+          "src": "public/assets/optimized/sunlit-room-1200-cb36dd8505.webp"
+        },
+        {
+          "width": 1600,
+          "height": 900,
+          "bytes": 296544,
+          "src": "public/assets/optimized/sunlit-room-1600-0b3ca9cd6a.webp"
+        }
+      ]
+    }
+  },
+  "fonts": {
+    "public/fonts/Inter/Inter_18pt-Bold.woff2": {
+      "src": "public/assets/optimized/Inter_18pt-Bold-latin-cyrillic-9454da995e.woff2",
+      "originalBytes": 118808,
+      "bytes": 63864
+    },
+    "public/fonts/Inter/Inter_18pt-Medium.woff2": {
+      "src": "public/assets/optimized/Inter_18pt-Medium-latin-cyrillic-c15941622f.woff2",
+      "originalBytes": 117812,
+      "bytes": 63268
+    },
+    "public/fonts/Inter/Inter_18pt-Regular.woff2": {
+      "src": "public/assets/optimized/Inter_18pt-Regular-latin-cyrillic-e8718a3eb7.woff2",
+      "originalBytes": 116168,
+      "bytes": 61980
+    },
+    "public/fonts/Inter/Inter_18pt-SemiBold.woff2": {
+      "src": "public/assets/optimized/Inter_18pt-SemiBold-latin-cyrillic-033702706d.woff2",
+      "originalBytes": 118896,
+      "bytes": 63664
+    }
+  },
+  "icons": {
+    "atmosphere": {
+      "src": "public/assets/optimized/icon-atmosphere-77f2ded706.webp",
+      "bytes": 17122
+    },
+    "bakery": {
+      "src": "public/assets/optimized/icon-bakery-dfc71a4a70.webp",
+      "bytes": 17734
+    },
+    "ingredients": {
+      "src": "public/assets/optimized/icon-ingredients-a1d3b5fd60.webp",
+      "bytes": 29134
+    },
+    "coffee": {
+      "src": "public/assets/optimized/icon-coffee-ad3265cc21.webp",
+      "bytes": 18482
+    },
+    "leaf": {
+      "src": "public/assets/optimized/icon-leaf-91a3fe0aff.webp",
+      "bytes": 19362
+    },
+    "phone": {
+      "src": "public/assets/optimized/icon-phone-a7084497b5.webp",
+      "bytes": 18842
+    },
+    "pin": {
+      "src": "public/assets/optimized/icon-pin-02bb9d34e6.webp",
+      "bytes": 19486
+    },
+    "clock": {
+      "src": "public/assets/optimized/icon-clock-ca4ee4df20.webp",
+      "bytes": 15352
+    },
+    "delivery": {
+      "src": "public/assets/optimized/icon-delivery-ed77511c5c.webp",
+      "bytes": 18924
+    },
+    "message": {
+      "src": "public/assets/optimized/icon-message-a9cbfa8280.webp",
+      "bytes": 14226
+    }
+  }
+}

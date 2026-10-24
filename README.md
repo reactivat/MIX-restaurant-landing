@@ -8,4 +8,20 @@
 
 Чтобы посмотреть сайт, достаточно открыть `index.html`. Установка и сборка не нужны.
 
+Для локальной проверки через HTTP: `node scripts/serve.mjs`, затем открыть `http://127.0.0.1:8768`.
+
+Фото имеют несколько размеров WebP; браузер выбирает вариант по экрану и плотности пикселей. Скрытые слайды, фон между секциями и дополнительные скрипты подгружаются по мере необходимости. Карта загружается по кнопке.
+
+Для обновления оптимизированных ресурсов нужны Python и зависимости из `scripts/requirements-assets.txt`. Исходные фото и шрифты сохранены. Порядок обновления:
+
+```text
+python -m pip install -r scripts/requirements-assets.txt
+python scripts/optimize_assets.py
+python scripts/update_asset_references.py
+python scripts/version_assets.py
+python scripts/check_assets.py
+```
+
+После обычных правок CSS/JS достаточно выполнить `python scripts/version_assets.py` и `python scripts/check_assets.py`: версии URL защищают обновлённую разметку от старых скриптов в кеше. Подробности измерений — в [docs/performance.md](docs/performance.md).
+
 Шрифт — Inter. Часть изображений сгенерирована. Значки YouTube и VK взяты из [Simple Icons](https://github.com/simple-icons/simple-icons) (CC0-1.0), RUTUBE и MAX — из [брендбука RUTUBE](https://rutube.ru/brand/) и [брендбука MAX](https://go.max.ru/brandbook/).
