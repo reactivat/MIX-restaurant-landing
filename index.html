@@ -29,7 +29,11 @@
                 <a class="header__logo-link" href="#top" aria-label="MIX — на главную"><img class="header__logo" src="public/assets/mix/brand/mix-brush-dark.svg" alt="MIX" width="114" height="58"></a>
                 <div class="header__menu-shell">
                     <div class="header__backdrop" aria-hidden="true"></div>
+                    <div class="header__menu-accent" aria-hidden="true">
+                        <svg class="header__curve" viewBox="0 0 100 1000" preserveAspectRatio="none"><path d="M100 0 L200 0 L200 1000 L100 1000 Q-100 500 100 0"></path></svg>
+                    </div>
                     <nav class="header__nav" id="navigation" aria-label="Основная навигация">
+                        <a class="header__nav-brand" href="#top" aria-label="MIX — на главную"><img src="public/assets/mix/brand/mix-brush-dark.svg" alt="MIX" width="114" height="58"></a>
                         <div class="header__nav-content">
                             <p class="header__nav-caption">Место для вкусных встреч</p>
                             <ul class="header__nav-list">
@@ -58,7 +62,7 @@
                 </div>
                 <div class="header__actions">
                     <a class="header__button button button--small" href="#contactForm">Заказать <span class="header__button-icon" aria-hidden="true">→</span></a>
-                    <button class="header__toggle icon-button" type="button" aria-controls="navigation" aria-expanded="false" aria-label="Открыть меню" hidden><span class="header__toggle-lines" aria-hidden="true"><span></span><span></span><span></span></span></button>
+                    <button class="header__toggle icon-button" type="button" aria-controls="navigation" aria-expanded="false" aria-label="Открыть меню" hidden><svg class="header__toggle-icon" viewBox="0 0 32 32" aria-hidden="true"><path class="header__toggle-trace" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path><path d="M7 16 27 16"></path></svg></button>
                 </div>
             </div>
         </header>

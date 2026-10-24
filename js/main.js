@@ -126,7 +126,9 @@
         const mobile = window.matchMedia('(max-width: 800px)');
         const shell = header.querySelector('.header__menu-shell');
         const backdrop = header.querySelector('.header__backdrop');
-        const curve = header.querySelector('.header__curve path');
+        const curves = Array.from(header.querySelectorAll('.header__curve path')).map(function (path) {
+            return { path: path, amount: 0 };
+        });
         const links = Array.from(navigation.querySelectorAll('.header__nav-link[href^="#"]'));
         const sections = links.map(function (link) {
             return { link: link, target: document.getElementById(link.hash.slice(1)) };
@@ -134,7 +136,6 @@
         let updateQueued = false;
         let menuOpen = false;
         let curveFrame = 0;
-        let curveAmount = 0;
         const inertElements = new Map();
 
         links.forEach(function (link, index) {
@@ -182,8 +183,12 @@
         queueCurrentLinkUpdate();
 
         function drawCurve(amount) {
-            curveAmount = amount;
-            curve.setAttribute('d', 'M100 0 L200 0 L200 1000 L100 1000 Q' + (-100 + amount * 200) + ' 500 100 0');
+            curves.forEach(function (curve) { updateCurve(curve, amount); });
+        }
+
+        function updateCurve(curve, amount) {
+            curve.amount = amount;
+            curve.path.setAttribute('d', 'M100 0 L200 0 L200 1000 L100 1000 Q' + (-100 + amount * 200) + ' 500 100 0');
         }
 
         function animateCurve(open) {
@@ -193,14 +198,20 @@
                 drawCurve(target);
                 return;
             }
-            const start = curveAmount;
+            const starts = curves.map(function (curve) { return curve.amount; });
             const started = performance.now();
-            const duration = open ? 1000 : 550;
             function frame(now) {
-                const progress = Math.min((now - started) / duration, 1);
-                const eased = progress * progress * (3 - 2 * progress);
-                drawCurve(start + (target - start) * eased);
-                if (progress < 1) curveFrame = requestAnimationFrame(frame);
+                let finished = true;
+                curves.forEach(function (curve, index) {
+                    // Зелёный край ведёт при открытии, кремовый догоняет его.
+                    const delay = open ? index * 140 : (1 - index) * 100;
+                    const duration = open ? 860 : 550;
+                    const progress = Math.max(0, Math.min((now - started - delay) / duration, 1));
+                    const eased = progress * progress * (3 - 2 * progress);
+                    updateCurve(curve, starts[index] + (target - starts[index]) * eased);
+                    if (progress < 1) finished = false;
+                });
+                if (!finished) curveFrame = requestAnimationFrame(frame);
             }
             curveFrame = requestAnimationFrame(frame);
         }

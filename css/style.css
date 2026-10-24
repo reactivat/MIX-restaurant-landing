@@ -295,33 +295,32 @@ a {
 }
 
 .header__backdrop,
+.header__menu-accent,
+.header__nav-brand,
 .header__nav-caption,
 .header__nav-footer,
 .header__curve {
     display: none;
 }
 
-.header__toggle-lines {
-    position: relative;
-    width: 22px;
-    height: 18px;
+.header__toggle .header__toggle-icon {
+    width: 28px;
+    height: 28px;
+    stroke-width: 2.5;
+    transition: transform 0.5s ease-in-out;
 }
 
-.header__toggle-lines span {
-    position: absolute;
-    inset-inline: 0;
-    top: 8px;
-    height: 2px;
-    border-radius: 2px;
-    background: currentColor;
-    transition: transform 0.4s var(--motion-ease), opacity 0.2s;
+.header__toggle-trace {
+    stroke-dasharray: 12 63;
+    stroke-dashoffset: 0;
+    transition: stroke-dasharray 0.5s ease-in-out, stroke-dashoffset 0.5s ease-in-out;
 }
 
-.header__toggle-lines span:first-child { transform: translateY(-6px); }
-.header__toggle-lines span:last-child { transform: translateY(6px); }
-.header__toggle[aria-expanded="true"] .header__toggle-lines span:first-child { transform: rotate(45deg); }
-.header__toggle[aria-expanded="true"] .header__toggle-lines span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.header__toggle[aria-expanded="true"] .header__toggle-lines span:last-child { transform: rotate(-45deg); }
+.header__toggle[aria-expanded="true"] .header__toggle-icon { transform: rotate(-45deg); }
+.header__toggle[aria-expanded="true"] .header__toggle-trace {
+    stroke-dasharray: 20 300;
+    stroke-dashoffset: -32.42px;
+}
 
 .header__nav-list {
     display: flex;
@@ -1981,6 +1980,8 @@ a {
 
     .header--enhanced .header__menu-shell {
         --menu-duration: 0.55s;
+        --menu-accent-delay: 0.1s;
+        --menu-panel-delay: 0s;
         --menu-ease: cubic-bezier(0.76, 0, 0.24, 1);
         position: fixed;
         z-index: 1;
@@ -1989,11 +1990,13 @@ a {
         overflow: hidden;
         visibility: hidden;
         pointer-events: none;
-        transition: visibility 0s var(--menu-duration);
+        transition: visibility 0s calc(var(--menu-duration) + var(--menu-accent-delay));
     }
 
     .header--menu-open .header__menu-shell {
         --menu-duration: 0.8s;
+        --menu-accent-delay: 0s;
+        --menu-panel-delay: 0.14s;
         visibility: visible;
         transition-delay: 0s;
     }
@@ -2009,23 +2012,43 @@ a {
 
     .header--menu-open .header__backdrop { opacity: 1; pointer-events: auto; }
 
+    .header--enhanced .header__menu-accent,
     .header--enhanced .header__nav {
         position: absolute;
         inset: 0 0 0 auto;
         width: min(100%, 520px);
         padding: 0;
-        background: var(--mix-cream);
+        background: var(--menu-panel-color, var(--mix-cream));
         transform: translateX(calc(100% + 100px));
-        transition: transform var(--menu-duration) var(--menu-ease);
+        transition: transform var(--menu-duration) var(--menu-ease) var(--menu-panel-delay);
     }
 
+    .header--enhanced .header__menu-accent {
+        --menu-panel-color: var(--mix-olive);
+        display: block;
+        transition-delay: var(--menu-accent-delay);
+    }
+
+    .header--menu-open .header__menu-accent { transform: translateX(0); }
     .header--menu-open .header__nav { transform: translateX(0); pointer-events: auto; }
+
+    .header--enhanced .header__nav-brand {
+        position: absolute;
+        top: calc((var(--header-height) - var(--header-control-height)) / 2);
+        left: clamp(24px, 7vw, 52px);
+        display: inline-flex;
+        align-items: center;
+        min-height: var(--header-control-height);
+    }
+
+    .header__nav-brand img { width: 78px; height: auto; }
 
     .header--enhanced .header__nav-content {
         display: flex;
         flex-direction: column;
         height: 100%;
         padding: calc(var(--header-height) + 32px) clamp(24px, 7vw, 52px) max(28px, env(safe-area-inset-bottom));
+        overflow-x: hidden;
         overflow-y: auto;
         overscroll-behavior: contain;
     }
@@ -2050,7 +2073,7 @@ a {
         opacity: 1;
         transform: translateX(0);
         transition: transform 0.65s var(--motion-ease), opacity 0.45s;
-        transition-delay: calc(0.23s + var(--menu-index, 0) * 0.065s);
+        transition-delay: calc(0.37s + var(--menu-index, 0) * 0.065s);
     }
 
     .header--enhanced .header__nav-link {
@@ -2107,7 +2130,7 @@ a {
         display: block;
         width: 100px;
         height: 100%;
-        fill: var(--mix-cream);
+        fill: var(--menu-panel-color, var(--mix-cream));
         pointer-events: none;
     }
 
