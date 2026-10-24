@@ -2315,10 +2315,6 @@ a {
         --header-action-gap: 12px;
     }
 
-    .header {
-        background: var(--color-hero-panel) url(../public/assets/mix/decor/paper-grain.svg);
-    }
-
     .header__inner {
         width: calc(100% - 64px);
         border-bottom: 0;
