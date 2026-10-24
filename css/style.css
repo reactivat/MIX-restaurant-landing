@@ -2534,11 +2534,19 @@ html:not(.js) .photo-window {
     }
 
     .about {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        width: calc(100% - 16px);
+        border-radius: 16px;
+        background: var(--color-hero-panel) url(../public/assets/mix/decor/paper-grain.svg);
     }
 
     .about__content {
-        padding: 24px;
+        position: relative;
+        z-index: 2;
+        padding: 24px 24px 88px;
+        background: var(--color-hero-panel) url(../public/assets/mix/decor/paper-grain.svg);
+        clip-path: url(#hero-mobile-curve);
     }
 
     .about__heading {
@@ -2546,14 +2554,25 @@ html:not(.js) .photo-window {
     }
 
     .about__figure {
-        min-height: 230px;
-        max-height: 260px;
+        flex: none;
+        height: clamp(300px, 85vw, 420px);
+        min-height: 0;
+        max-height: none;
+        margin-top: -160px;
+        background: transparent;
         clip-path: none;
     }
 
     .about__image {
-        height: 260px;
-        clip-path: polygon(0 7%, 100% 0, 100% 100%, 0 100%);
+        height: 100%;
+        clip-path: none;
+    }
+
+    .about__link {
+        min-height: 44px;
+        padding: 11px 22px;
+        box-shadow: none;
+        font-size: 15px;
     }
 
     .section-header {

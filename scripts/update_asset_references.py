@@ -61,7 +61,7 @@ def update_image(match):
     elif 'dish__image' in tag:
         sizes = '(max-width: 699px) 87vw, (max-width: 1100px) 40vw, 29vw'
     elif 'about__image' in tag:
-        sizes = '(max-width: 600px) max(100vw, 462px), max(50vw, 711px)'
+        sizes = '(max-width: 600px) max(533px, min(151vw, 747px)), max(50vw, 711px)'
     else:
         sizes = '(max-width: 600px) 100vw, 50vw'
     tag = attribute(tag, 'sizes', sizes)
