@@ -2402,11 +2402,13 @@ html:not(.js) .photo-window {
 
     .hero__branch {
         display: block;
-        bottom: -24px;
-        left: 12px;
-        width: 72px;
-        height: 118px;
-        transform: rotate(60deg);
+        top: -8px;
+        right: -6px;
+        bottom: auto;
+        left: auto;
+        width: 64px;
+        height: 105px;
+        transform: rotate(180deg);
     }
 
     .hero__heading {
