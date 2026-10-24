@@ -71,6 +71,7 @@
                 <div class="hero__media">
                     <div class="hero__slide" role="group" aria-roledescription="слайд" aria-label="1 из 5: паста">
                         <picture class="hero__picture">
+                            <source media="(max-width: 600px)" srcset="public/assets/mix/hero/slide-03-dessert.webp">
                             <img class="hero__image" src="public/assets/mix/hero/slide-01-pasta.webp" alt="Паста с креветками на столе в тёплом солнечном свете" width="1672" height="941" fetchpriority="high">
                         </picture>
                     </div>
@@ -81,6 +82,7 @@
                     </div>
                     <div class="hero__slide" role="group" aria-roledescription="слайд" aria-label="3 из 5: десерт" hidden>
                         <picture class="hero__picture">
+                            <source media="(max-width: 600px)" srcset="public/assets/mix/hero/slide-01-pasta.webp">
                             <img class="hero__image" src="public/assets/mix/hero/slide-03-dessert.webp" alt="Тирамису с ягодами и чашка эспрессо" width="1448" height="1086" loading="lazy" decoding="async">
                         </picture>
                     </div>
@@ -104,6 +106,7 @@
                         <p class="hero__hours">Ежедневно с 10:00 до 22:00</p>
                     </div>
                 </div>
+                <div class="hero__progress" aria-hidden="true"><span class="hero__progress-bar is-active"></span><span class="hero__progress-bar"></span><span class="hero__progress-bar"></span><span class="hero__progress-bar"></span><span class="hero__progress-bar"></span></div>
                 <button class="hero__pause" type="button" aria-label="Приостановить слайдер" aria-pressed="false" hidden>Приостановить смену фото</button>
                 <p class="hero__instructions visually-hidden" id="hero-instructions">Смена фото: стрелки влево и вправо или горизонтальный свайп. При фокусе смена приостанавливается.</p>
                 <p class="hero__status visually-hidden" aria-live="off" aria-atomic="true">Слайд 1 из 5: паста и хорошая компания.</p>

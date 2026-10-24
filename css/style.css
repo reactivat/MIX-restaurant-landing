@@ -494,6 +494,10 @@ a {
     font-size: 13px;
 }
 
+.hero__progress {
+    display: none;
+}
+
 /* Клавиатурная пауза появляется только при фокусе, фото остаётся чистым. */
 .hero__pause {
     position: absolute;
@@ -2318,18 +2322,15 @@ a {
     }
 
     .hero {
-        display: flex;
-        flex-direction: column;
-        min-height: 0;
+        min-height: max(640px, calc(100svh - var(--header-height) - 20px));
         border-radius: 16px;
     }
 
     .hero__media {
-        position: relative;
-        inset: auto;
-        flex: none;
+        position: absolute;
+        inset: auto 0 0;
         width: 100%;
-        height: clamp(170px, 48vw, 200px);
+        height: 64%;
     }
 
     .hero__media::after {
@@ -2337,13 +2338,17 @@ a {
     }
 
     .hero__image {
-        object-position: center 60%;
+        object-position: 55% 55%;
     }
 
     .hero__panel {
-        order: -1;
+        position: absolute;
+        inset: 0 0 auto;
         width: 100%;
+        height: 60%;
         min-height: 0;
+        align-items: flex-start;
+        clip-path: polygon(0 0, 100% 0, 100% 63%, 85% 68%, 68% 74%, 51% 80%, 34% 87%, 17% 94%, 0 100%);
     }
 
     .hero__panel::after {
@@ -2351,11 +2356,10 @@ a {
     }
 
     .hero__content {
-        display: grid;
-        grid-template-columns: max-content minmax(0, 1fr);
-        column-gap: 14px;
-        align-items: center;
-        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 28px 24px;
     }
 
     .hero__branch {
@@ -2363,17 +2367,15 @@ a {
     }
 
     .hero__heading {
-        grid-column: 1 / -1;
-        font-size: clamp(26px, 7.2vw, 34px);
+        font-size: clamp(34px, 9vw, 42px);
         letter-spacing: -0.055em;
     }
 
     .hero__heading-break {
-        display: none;
+        display: initial;
     }
 
     .hero__description {
-        grid-column: 1 / -1;
         max-width: 40ch;
         margin-top: 12px;
         padding-right: 0;
@@ -2384,17 +2386,38 @@ a {
     .hero__button {
         min-height: 44px;
         margin-top: 16px;
-        padding: 10px 14px;
-        gap: 8px;
-        font-size: 12px;
+        padding: 10px 18px;
+        gap: 12px;
+        font-size: 13px;
         white-space: nowrap;
     }
 
     .hero__hours {
         max-width: none;
-        margin-top: 16px;
+        margin-top: 12px;
         font-size: 11px;
         line-height: 1.4;
+    }
+
+    .hero__progress {
+        position: absolute;
+        z-index: 3;
+        bottom: 24px;
+        left: 24px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .hero__progress-bar {
+        width: 34px;
+        height: 3px;
+        border-radius: 99px;
+        background: rgb(255 255 255 / 42%);
+    }
+
+    .hero__progress-bar.is-active {
+        background: var(--mix-white);
     }
 
     .advantages {

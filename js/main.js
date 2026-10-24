@@ -332,6 +332,8 @@
         const slides = Array.from(hero.querySelectorAll('.hero__slide'));
         const pause = hero.querySelector('.hero__pause');
         const status = hero.querySelector('.hero__status');
+        const progressBars = Array.from(hero.querySelectorAll('.hero__progress-bar'));
+        const mobileHero = window.matchMedia('(max-width: 600px)');
         const switchPanel = createPanelSwitcher(slides, 600, 0);
         const topics = ['Паста и хорошая компания', 'Пицца для вкусных встреч', 'Время для сладкой паузы', 'Атмосфера, в которой хорошо', 'Утро начинается со вкуса'];
         let current = 0;
@@ -344,6 +346,24 @@
         let request = 0;
 
         pause.hidden = false;
+
+        function slideTopic(index) {
+            if (mobileHero.matches && index === 0) return topics[2];
+            if (mobileHero.matches && index === 2) return topics[0];
+            return topics[index];
+        }
+
+        function syncSlideDescriptions() {
+            const mobile = mobileHero.matches;
+            slides[0].setAttribute('aria-label', '1 из 5: ' + (mobile ? 'десерт' : 'паста'));
+            slides[2].setAttribute('aria-label', '3 из 5: ' + (mobile ? 'паста' : 'десерт'));
+            slides[0].querySelector('img').alt = mobile ? 'Тирамису с ягодами и чашка эспрессо' : 'Паста с креветками на столе в тёплом солнечном свете';
+            slides[2].querySelector('img').alt = mobile ? 'Паста с креветками на столе в тёплом солнечном свете' : 'Тирамису с ягодами и чашка эспрессо';
+            status.textContent = 'Слайд ' + (current + 1) + ' из ' + slides.length + ': ' + slideTopic(current) + '.';
+        }
+
+        syncSlideDescriptions();
+        mobileHero.addEventListener('change', syncSlideDescriptions);
 
         function syncTimer() {
             pause.hidden = reducedMotion.matches;
@@ -392,7 +412,8 @@
 
                 switchPanel(target);
                 status.setAttribute('aria-live', manual ? 'polite' : 'off');
-                status.textContent = 'Слайд ' + (target + 1) + ' из ' + slides.length + ': ' + topics[target] + '.';
+                status.textContent = 'Слайд ' + (target + 1) + ' из ' + slides.length + ': ' + slideTopic(target) + '.';
+                progressBars.forEach(function (bar, index) { bar.classList.toggle('is-active', index === target); });
                 preloadNext();
             } catch (error) {
                 // При ошибке загрузки сохраняем предыдущую фотографию.
