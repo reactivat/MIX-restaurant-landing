@@ -2125,7 +2125,19 @@ a {
     }
 
     .header--enhanced .header__actions { position: relative; z-index: 2; }
-    .header--menu-open .header__button { visibility: hidden; }
+    .header--enhanced .header__button {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.24s var(--motion-ease) 0.66s, transform 0.24s var(--motion-ease) 0.66s, visibility 0s linear 0.66s;
+    }
+
+    .header--menu-open .header__button {
+        opacity: 0;
+        transform: translateY(-5px);
+        visibility: hidden;
+        pointer-events: none;
+        transition-delay: 0s, 0s, 0.24s;
+    }
     @media (max-height: 600px) {
         .header--enhanced .header__nav-content { padding-top: calc(var(--header-height) + 8px); }
         .header--enhanced .header__nav-caption { margin-bottom: 8px; }
