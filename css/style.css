@@ -494,8 +494,10 @@ a {
     font-size: 13px;
 }
 
-.hero__progress {
-    display: none;
+.hero__clip {
+    position: absolute;
+    width: 0;
+    height: 0;
 }
 
 /* Клавиатурная пауза появляется только при фокусе, фото остаётся чистым. */
@@ -2307,30 +2309,45 @@ a {
 @media (max-width: 600px) {
     :root {
         --page-gutter: 16px;
-        --header-height: 68px;
+        --header-height: 76px;
         --header-control-height: 44px;
         --header-action-inset: 12px;
         --header-action-gap: 12px;
     }
 
+    .header {
+        background: var(--color-hero-panel) url(../public/assets/mix/decor/paper-grain.svg);
+    }
+
+    .header__inner {
+        width: calc(100% - 64px);
+        border-bottom: 0;
+    }
+
     .header__logo {
-        width: 72px;
+        width: 64px;
     }
 
     .header__button {
         padding-inline: var(--header-action-inset);
+        font-size: clamp(13px, 3.6vw, 15px);
     }
 
     .hero {
-        min-height: max(640px, calc(100svh - var(--header-height) - 20px));
-        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        width: calc(100% - 16px);
+        min-height: 0;
+        border-radius: 0 0 20px 20px;
     }
 
     .hero__media {
-        position: absolute;
-        inset: auto 0 0;
+        position: relative;
+        inset: auto;
+        flex: none;
         width: 100%;
-        height: 64%;
+        height: clamp(400px, 130vw, 620px);
+        margin-top: -160px;
     }
 
     .hero__media::after {
@@ -2342,13 +2359,14 @@ a {
     }
 
     .hero__panel {
-        position: absolute;
-        inset: 0 0 auto;
+        position: relative;
+        order: -1;
         width: 100%;
-        height: 60%;
+        height: auto;
         min-height: 0;
+        padding-bottom: 64px;
         align-items: flex-start;
-        clip-path: polygon(0 0, 100% 0, 100% 63%, 85% 68%, 68% 74%, 51% 80%, 34% 87%, 17% 94%, 0 100%);
+        clip-path: url(#hero-mobile-curve);
     }
 
     .hero__panel::after {
@@ -2359,7 +2377,7 @@ a {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        padding: 28px 24px;
+        padding: 28px 24px 0;
     }
 
     .hero__branch {
@@ -2367,7 +2385,7 @@ a {
     }
 
     .hero__heading {
-        font-size: clamp(34px, 9vw, 42px);
+        font-size: clamp(36px, 11vw, 48px);
         letter-spacing: -0.055em;
     }
 
@@ -2379,45 +2397,25 @@ a {
         max-width: 40ch;
         margin-top: 12px;
         padding-right: 0;
-        font-size: 14px;
+        font-size: clamp(15px, 4.1vw, 18px);
         line-height: 1.45;
     }
 
     .hero__button {
         min-height: 44px;
         margin-top: 16px;
-        padding: 10px 18px;
-        gap: 12px;
-        font-size: 13px;
+        padding: 11px 22px;
+        gap: 18px;
+        box-shadow: none;
+        font-size: 15px;
         white-space: nowrap;
     }
 
     .hero__hours {
         max-width: none;
         margin-top: 12px;
-        font-size: 11px;
+        font-size: 12px;
         line-height: 1.4;
-    }
-
-    .hero__progress {
-        position: absolute;
-        z-index: 3;
-        bottom: 24px;
-        left: 24px;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-    }
-
-    .hero__progress-bar {
-        width: 34px;
-        height: 3px;
-        border-radius: 99px;
-        background: rgb(255 255 255 / 42%);
-    }
-
-    .hero__progress-bar.is-active {
-        background: var(--mix-white);
     }
 
     .advantages {

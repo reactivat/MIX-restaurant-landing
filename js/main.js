@@ -332,7 +332,6 @@
         const slides = Array.from(hero.querySelectorAll('.hero__slide'));
         const pause = hero.querySelector('.hero__pause');
         const status = hero.querySelector('.hero__status');
-        const progressBars = Array.from(hero.querySelectorAll('.hero__progress-bar'));
         const mobileHero = window.matchMedia('(max-width: 600px)');
         const switchPanel = createPanelSwitcher(slides, 600, 0);
         const topics = ['Паста и хорошая компания', 'Пицца для вкусных встреч', 'Время для сладкой паузы', 'Атмосфера, в которой хорошо', 'Утро начинается со вкуса'];
@@ -413,7 +412,6 @@
                 switchPanel(target);
                 status.setAttribute('aria-live', manual ? 'polite' : 'off');
                 status.textContent = 'Слайд ' + (target + 1) + ' из ' + slides.length + ': ' + slideTopic(target) + '.';
-                progressBars.forEach(function (bar, index) { bar.classList.toggle('is-active', index === target); });
                 preloadNext();
             } catch (error) {
                 // При ошибке загрузки сохраняем предыдущую фотографию.
