@@ -489,19 +489,9 @@ a {
 }
 
 .hero__hours {
-    display: flex;
-    align-items: center;
-    gap: 8px;
     margin-top: 18px;
     color: var(--mix-text-muted);
     font-size: 13px;
-}
-
-.hero__hours-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--mix-olive);
 }
 
 /* Клавиатурная пауза появляется только при фокусе, фото остаётся чистым. */
@@ -1959,7 +1949,7 @@ a {
         display: inline-flex;
         width: var(--header-control-height);
         height: var(--header-control-height);
-        border: 1px solid var(--mix-border);
+        border: 0;
         border-radius: var(--header-control-radius);
     }
 
@@ -2136,8 +2126,6 @@ a {
 
     .header--enhanced .header__actions { position: relative; z-index: 2; }
     .header--menu-open .header__button { visibility: hidden; }
-    .header__toggle[aria-expanded="true"] { border-color: transparent; }
-
     @media (max-height: 600px) {
         .header--enhanced .header__nav-content { padding-top: calc(var(--header-height) + 8px); }
         .header--enhanced .header__nav-caption { margin-bottom: 8px; }
@@ -2393,13 +2381,8 @@ a {
     .hero__hours {
         max-width: none;
         margin-top: 16px;
-        gap: 6px;
         font-size: 11px;
         line-height: 1.4;
-    }
-
-    .hero__hours-dot {
-        flex-shrink: 0;
     }
 
     .advantages {
