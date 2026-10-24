@@ -124,12 +124,22 @@
         const toggle = header.querySelector('.header__toggle');
         const navigation = header.querySelector('.header__nav');
         const mobile = window.matchMedia('(max-width: 800px)');
-        const icon = toggle.querySelector('path');
+        const shell = header.querySelector('.header__menu-shell');
+        const backdrop = header.querySelector('.header__backdrop');
+        const curve = header.querySelector('.header__curve path');
         const links = Array.from(navigation.querySelectorAll('.header__nav-link[href^="#"]'));
         const sections = links.map(function (link) {
             return { link: link, target: document.getElementById(link.hash.slice(1)) };
         }).filter(function (section) { return section.target; });
         let updateQueued = false;
+        let menuOpen = false;
+        let curveFrame = 0;
+        let curveAmount = 0;
+        const inertElements = new Map();
+
+        links.forEach(function (link, index) {
+            link.parentElement.style.setProperty('--menu-index', index);
+        });
 
         header.classList.add('header--enhanced');
         toggle.hidden = false;
@@ -171,19 +181,71 @@
         window.addEventListener('load', queueCurrentLinkUpdate);
         queueCurrentLinkUpdate();
 
+        function drawCurve(amount) {
+            curveAmount = amount;
+            curve.setAttribute('d', 'M100 0 L200 0 L200 1000 L100 1000 Q' + (-100 + amount * 200) + ' 500 100 0');
+        }
+
+        function animateCurve(open) {
+            cancelAnimationFrame(curveFrame);
+            const target = open ? 1 : 0;
+            if (reducedMotion.matches || !mobile.matches) {
+                drawCurve(target);
+                return;
+            }
+            const start = curveAmount;
+            const started = performance.now();
+            const duration = open ? 1000 : 550;
+            function frame(now) {
+                const progress = Math.min((now - started) / duration, 1);
+                const eased = progress * progress * (3 - 2 * progress);
+                drawCurve(start + (target - start) * eased);
+                if (progress < 1) curveFrame = requestAnimationFrame(frame);
+            }
+            curveFrame = requestAnimationFrame(frame);
+        }
+
         function setMenu(open, restoreFocus) {
+            open = open && mobile.matches;
+            const changed = open !== menuOpen;
+            menuOpen = open;
             header.classList.toggle('header--menu-open', open);
+            document.body.classList.toggle('menu-open', open);
             toggle.setAttribute('aria-expanded', String(open));
             toggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
-            icon.setAttribute('d', open ? 'm6 6 12 12M18 6 6 18' : 'M4 7h16M4 12h16M4 17h16');
+            shell.inert = mobile.matches && !open;
+
+            if (open) {
+                header.setAttribute('role', 'dialog');
+                header.setAttribute('aria-modal', 'true');
+                header.setAttribute('aria-label', 'Навигация MIX');
+                if (changed) {
+                    const background = Array.from(document.body.children).filter(function (element) {
+                        return element !== header && !['SCRIPT', 'STYLE'].includes(element.tagName);
+                    }).concat([header.querySelector('.header__logo-link'), header.querySelector('.header__button')]);
+                    background.forEach(function (element) {
+                        inertElements.set(element, element.inert);
+                        element.inert = true;
+                    });
+                    links[0].focus({ preventScroll: true });
+                }
+            } else {
+                header.removeAttribute('role');
+                header.removeAttribute('aria-modal');
+                header.removeAttribute('aria-label');
+                inertElements.forEach(function (inert, element) { element.inert = inert; });
+                inertElements.clear();
+            }
+
+            if (changed) animateCurve(open);
 
             if (restoreFocus) {
-                toggle.focus();
+                toggle.focus({ preventScroll: true });
             }
         }
 
         toggle.addEventListener('click', function () {
-            setMenu(toggle.getAttribute('aria-expanded') !== 'true', false);
+            setMenu(!menuOpen, false);
         });
 
         navigation.addEventListener('click', function (event) {
@@ -191,27 +253,47 @@
 
             if (link && mobile.matches) {
                 setMenu(false, false);
-                const destination = document.querySelector(link.getAttribute('href'));
-                destination.setAttribute('tabindex', '-1');
-                destination.focus({ preventScroll: true });
+                const destination = document.getElementById(link.hash.slice(1));
+                if (destination) {
+                    if (destination.tagName === 'DETAILS') destination.open = true;
+                    destination.setAttribute('tabindex', '-1');
+                    destination.focus({ preventScroll: true });
+                }
             }
         });
 
         document.addEventListener('keydown', function (event) {
-            if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+            if (!menuOpen) return;
+            if (event.key === 'Escape') {
+                event.preventDefault();
                 setMenu(false, true);
             }
-        });
-
-        document.addEventListener('click', function (event) {
-            if (!header.contains(event.target)) {
-                setMenu(false, false);
+            if (event.key === 'Tab') {
+                const controls = [toggle].concat(Array.from(navigation.querySelectorAll('a[href]')));
+                const index = controls.indexOf(document.activeElement);
+                const next = (index + (event.shiftKey ? -1 : 1) + controls.length) % controls.length;
+                event.preventDefault();
+                controls[next].focus({ preventScroll: true });
             }
         });
 
+        backdrop.addEventListener('click', function () { setMenu(false, true); });
+
         mobile.addEventListener('change', function () {
+            const focusWasInside = shell.contains(document.activeElement);
             setMenu(false, false);
+            cancelAnimationFrame(curveFrame);
+            drawCurve(0);
+            if (focusWasInside && mobile.matches) toggle.focus({ preventScroll: true });
+            else if (!mobile.matches && document.activeElement === toggle) links[0].focus({ preventScroll: true });
         });
+        reducedMotion.addEventListener('change', function () {
+            if (reducedMotion.matches) {
+                cancelAnimationFrame(curveFrame);
+                drawCurve(menuOpen ? 1 : 0);
+            }
+        });
+        setMenu(false, false);
     }
 
     function initSectionLinks() {

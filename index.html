@@ -27,28 +27,39 @@
         <header class="header">
             <div class="header__inner container">
                 <a class="header__logo-link" href="#top" aria-label="MIX — на главную"><img class="header__logo" src="public/assets/mix/brand/mix-brush-dark.svg" alt="MIX" width="114" height="58"></a>
-                <nav class="header__nav" id="navigation" aria-label="Основная навигация">
-                    <ul class="header__nav-list">
-                        <li class="header__nav-item">
-                            <a class="header__nav-link" href="#aboutUs">О нас</a>
-                        </li>
-                        <li class="header__nav-item">
-                            <a class="header__nav-link" href="#favorite">Меню</a>
-                        </li>
-                        <li class="header__nav-item">
-                            <a class="header__nav-link" href="#specials">Акции</a>
-                        </li>
-                        <li class="header__nav-item">
-                            <a class="header__nav-link" href="#comments">Отзывы</a>
-                        </li>
-                        <li class="header__nav-item">
-                            <a class="header__nav-link" href="#contact">Контакты</a>
-                        </li>
-                    </ul>
-                </nav>
+                <div class="header__menu-shell">
+                    <div class="header__backdrop" aria-hidden="true"></div>
+                    <nav class="header__nav" id="navigation" aria-label="Основная навигация">
+                        <div class="header__nav-content">
+                            <p class="header__nav-caption">Место для вкусных встреч</p>
+                            <ul class="header__nav-list">
+                                <li class="header__nav-item">
+                                    <a class="header__nav-link" href="#aboutUs">О нас</a>
+                                </li>
+                                <li class="header__nav-item">
+                                    <a class="header__nav-link" href="#favorite">Меню</a>
+                                </li>
+                                <li class="header__nav-item">
+                                    <a class="header__nav-link" href="#specials">Акции</a>
+                                </li>
+                                <li class="header__nav-item">
+                                    <a class="header__nav-link" href="#comments">Отзывы</a>
+                                </li>
+                                <li class="header__nav-item">
+                                    <a class="header__nav-link" href="#contact">Контакты</a>
+                                </li>
+                            </ul>
+                            <div class="header__nav-footer">
+                                <span>MIX · Европейское кафе</span>
+                                <a class="header__nav-order" href="#contactForm">Заказать <span aria-hidden="true">↗</span></a>
+                            </div>
+                        </div>
+                        <svg class="header__curve" viewBox="0 0 100 1000" preserveAspectRatio="none" aria-hidden="true"><path d="M100 0 L200 0 L200 1000 L100 1000 Q-100 500 100 0"></path></svg>
+                    </nav>
+                </div>
                 <div class="header__actions">
                     <a class="header__button button button--small" href="#contactForm">Заказать <span class="header__button-icon" aria-hidden="true">→</span></a>
-                    <button class="header__toggle icon-button" type="button" aria-controls="navigation" aria-expanded="false" aria-label="Открыть меню" hidden><svg class="header__toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+                    <button class="header__toggle icon-button" type="button" aria-controls="navigation" aria-expanded="false" aria-label="Открыть меню" hidden><span class="header__toggle-lines" aria-hidden="true"><span></span><span></span><span></span></span></button>
                 </div>
             </div>
         </header>
